@@ -1,0 +1,29 @@
+html,
+body,
+#root {
+  margin: 0;
+  width: 100%;
+  min-width: 100%;
+  min-height: 100vh;
+  background: #000;
+}
+
+body {
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  body,
+  #root,
+  .app,
+  .desktop {
+    width: 100%;
+    min-height: 100vh;
+    background: #080808;
+  }
+
+  .desktop {
+    display: block;
+    overflow: auto;
+  }
+}
