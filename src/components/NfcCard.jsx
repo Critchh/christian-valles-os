@@ -7,6 +7,11 @@ function NfcCard() {
 
   return (
     <div className="nfc-stage">
+      <div className="nfc-stage-heading">
+        <span>PHYSICAL + DIGITAL IDENTITY</span>
+        <strong>Tap once. Share instantly.</strong>
+        <p>A programmable NFC business card for opening contact details, a website, or a purpose-built destination.</p>
+      </div>
       <button
         className={`nfc-card${flipped ? " is-flipped" : ""}`}
         type="button"

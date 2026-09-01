@@ -97,35 +97,37 @@ const projects = [
 {
   id: "nfc-review-system",
 
-  title: "NFC Tap Review System",
+  title: "NFC Tap System",
 
   category: "PHYSICAL + DIGITAL SYSTEM",
 
   status: "Active Project",
 
   description:
-    "A physical NFC review solution designed for businesses to reduce friction between customers and online review pages.",
+    "A programmable physical-to-digital system that opens review pages, websites, contact cards, and other business destinations with one tap.",
 
   overview:
-    "The NFC Tap Review System combines programmed NFC hardware with a physical acrylic display to give customers a fast, contactless way to access a business's review page. The project was developed as a practical business solution that connects physical products with digital customer engagement.",
+    "The NFC Tap System combines programmed NFC hardware with business cards and acrylic displays to give customers, prospects, and professional contacts a fast way to open the right digital destination. Each product can launch a review page, website, digital contact card, portfolio, menu, or campaign-specific experience.",
 
   problem:
-    "Businesses often ask satisfied customers to leave reviews, but the process can involve searching for the business online, finding the correct listing, and navigating to the review page. Each additional step creates friction and reduces the likelihood that a customer completes the review.",
+    "Sharing a business page or contact profile often depends on typing a URL, searching for the correct listing, exchanging paper details, or scanning a code. Every additional step adds friction and makes the interaction easier to abandon.",
 
   solution:
-    "The system uses an NFC-enabled acrylic stand placed at a checkout counter or customer-facing location. A customer taps the stand with a compatible smartphone and is directed to the business's designated review page, reducing the process to a simple physical interaction.",
+    "A programmed NFC chip is embedded in a business card or customer-facing acrylic stand. One phone tap opens the configured destination—such as contact information, a website, portfolio, review form, menu, or social profile—without requiring an app.",
 
   technologies: [
     "NFC",
     "Web URLs",
     "Mobile Devices",
+    "Business Cards",
     "Acrylic Hardware",
   ],
 
   features: [
-    "NFC-enabled physical acrylic stand",
+    "NFC-enabled metal business cards and acrylic stands",
     "Tap-to-open customer interaction",
-    "Direct routing to business review pages",
+    "Direct routing to websites and review pages",
+    "Instant digital contact-card access",
     "Mobile-first customer experience",
     "Business-specific NFC configuration",
     "Physical and digital system integration",
@@ -147,7 +149,7 @@ const projects = [
   liveDemo: "",
 
   note:
-    "A physical and digital business solution designed to simplify the customer review process using NFC technology.",
+    "A configurable physical-to-digital product system for sharing websites, contact information, reviews, menus, portfolios, and other business experiences through NFC technology.",
 
   image: "/nfc-review-products.png",
 },
