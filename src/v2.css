@@ -66,3 +66,48 @@
 .nfc-front img,.nfc-back img{object-fit:cover!important;object-position:center!important}
 
 @media(max-width:760px){.v2-brand-mark{width:36px;height:36px}}
+
+/* =========================================================
+   LUMEN EDGE — BASE THEME
+   One light source below every engineered-glass surface.
+========================================================= */
+:root{--bg:#06070d;--text:#c8cfe0;--muted:#7d879b;--dim:#4f596d;--lumen:#d9f5ff;--lumen-mid:#87c9df;--lumen-deep:rgba(75,151,180,.2);--hairline:rgba(205,225,242,.063);--hairline-strong:rgba(205,225,242,.11);--hairline-accent:rgba(217,245,255,.16);--hairline-lumen:rgba(135,201,223,.18)}
+.v2-shell{color:var(--text);background:radial-gradient(ellipse 65% 28% at 50% 104%,rgba(67,135,166,.08),transparent 72%),radial-gradient(circle at 72% 8%,rgba(40,76,110,.1),transparent 31rem),var(--bg)}
+
+/* Surfaces use composited bottom light plus inset hairlines, never a hard frame. */
+.v2-panel,.v2-window-layer .os-window,.v2-metric,.v2-prompts button,.feedback-all-item,.contact-v2-form,.contact-v2-form input,.contact-v2-form textarea,.v2-window-layer .project-detail-card,.v2-window-layer .project-feature,.v2-window-layer .project-note,.v2-window-layer .technology-list span{border:0!important;background:radial-gradient(ellipse 88% 44% at 50% 118%,rgba(91,169,198,.105),transparent 68%),linear-gradient(145deg,rgba(12,16,26,.96),rgba(7,9,15,.96))!important;box-shadow:inset 0 0 0 1px var(--hairline)!important}
+.v2-panel{box-shadow:inset 0 0 0 1px var(--hairline),0 22px 70px rgba(0,0,0,.14)!important}
+.v2-window-layer .os-window{box-shadow:inset 0 0 0 1px var(--hairline-strong),0 35px 100px rgba(0,0,0,.72)!important}
+.v2-window-layer .window-titlebar{border-bottom:1px solid var(--hairline-strong)!important;background:radial-gradient(ellipse 70% 90% at 50% 130%,rgba(87,163,191,.09),transparent 65%),#090e17!important}
+.v2-window-layer .window-content{background:radial-gradient(ellipse 85% 36% at 50% 112%,rgba(68,139,166,.07),transparent 70%),#070a11!important}
+.v2-overview-copy{border-top-color:var(--hairline-strong)}
+
+/* Chips and compact controls share the same glass edge. */
+.v2-tag,.v2-chip,.nfc-control,.feedback-show-all,.contact-v2-links a,.v2-window-layer .window-control{border:0!important;background:radial-gradient(ellipse 90% 95% at 50% 145%,rgba(96,176,205,.12),transparent 66%),rgba(9,13,21,.86)!important;box-shadow:inset 0 0 0 1px var(--hairline-strong)!important}
+.v2-chip{color:#91d9b0}.v2-tag{color:#78869b}
+
+/* Horizon signal: interaction is a line of light, not a color jump. */
+.v2-button,.v2-project-link,.v2-text-button,.v2-prompts button,.v2-tag,.nfc-control,.feedback-show-all,.contact-v2-links a,.v2-links a,.v2-links button,.v2-window-layer .window-control{position:relative;overflow:hidden;isolation:isolate}
+.v2-button:after,.v2-project-link:after,.v2-text-button:after,.v2-prompts button:after,.v2-tag:after,.nfc-control:after,.feedback-show-all:after,.contact-v2-links a:after,.v2-links a:after,.v2-links button:after,.v2-window-layer .window-control:after{content:"";position:absolute;z-index:3;left:22%;right:22%;bottom:0;height:1px;opacity:0;background:linear-gradient(90deg,transparent,var(--lumen-mid) 34%,var(--lumen) 50%,var(--lumen-mid) 66%,transparent);transition:left .24s ease,right .24s ease,opacity .24s ease;pointer-events:none}
+.v2-button:hover:after,.v2-project-link:hover:after,.v2-text-button:hover:after,.v2-prompts button:hover:after,.v2-tag:hover:after,.nfc-control:hover:after,.feedback-show-all:hover:after,.contact-v2-links a:hover:after,.v2-links a:hover:after,.v2-links button:hover:after,.v2-window-layer .window-control:hover:after{left:7%;right:7%;opacity:1}
+.v2-button:hover,.v2-project-link:hover,.v2-text-button:hover,.v2-prompts button:hover,.v2-tag:hover,.nfc-control:hover,.feedback-show-all:hover,.contact-v2-links a:hover,.v2-links a:hover,.v2-links button:hover{filter:none;transform:none;border-color:transparent!important}
+.v2-button.primary{background:var(--volt)!important;box-shadow:inset 0 0 0 1px rgba(255,255,255,.12),0 0 24px rgba(183,255,45,.055)!important}.v2-button.primary:after{background:linear-gradient(90deg,transparent,rgba(255,255,255,.72),#fff,rgba(255,255,255,.72),transparent)}
+
+/* Project cards reveal only a quiet base horizon. */
+.v2-project{position:relative;overflow:hidden}.v2-project:after{content:"";position:absolute;left:22%;right:22%;bottom:0;height:1px;opacity:0;background:linear-gradient(90deg,transparent,var(--lumen-mid),var(--lumen),var(--lumen-mid),transparent);transition:all .28s ease;pointer-events:none}.v2-project:hover:after{left:7%;right:7%;opacity:.9}
+
+/* Lumen sweep for any progress component used by the legacy windows. */
+.skill-progress-fill,.progress-fill,.proficiency-fill{background:linear-gradient(90deg,var(--lumen),var(--lumen-mid),var(--volt))!important;box-shadow:0 0 10px rgba(135,201,223,.14)}
+.typing-indicator i{background:var(--lumen-mid)!important}
+
+/* Feedback bento follows its content instead of carrying a tall legacy footprint. */
+.v2-trust-row{align-items:stretch;gap:14px;padding-bottom:20px}.v2-testimonials,.v2-review-cta{min-height:0!important;padding:21px 23px!important}.v2-testimonials .feedback-widget{min-height:0!important;height:auto!important;display:block!important}.v2-testimonials .feedback-widget-body{min-height:0!important}.v2-testimonials .feedback-widget-top{margin-bottom:10px!important}.v2-review-cta h2{font-size:26px;margin:10px 0 6px}.v2-review-cta p{font-size:13px;line-height:1.5;margin:0 0 16px}.v2-review-cta .v2-button{min-height:42px}.v2-testimonials .feedback-widget-body blockquote{font-size:13px!important;line-height:1.45!important;margin:7px 0 12px!important}.v2-testimonials .feedback-author{margin-top:8px!important}
+
+/* Keep the customer proof row dense enough to scan without an empty lower half. */
+.v2-testimonials,.v2-review-cta{padding:17px 21px!important}
+.v2-testimonials .feedback-widget-body{display:grid!important;align-content:start!important}
+.v2-review-cta h2{font-size:22px;line-height:1.08;margin:7px 0 5px}
+.v2-review-cta p{font-size:12px;line-height:1.4;margin-bottom:10px}
+.v2-review-cta .v2-button{min-height:38px;padding:0 16px}
+.v2-testimonials .feedback-widget-body h3{font-size:16px!important;margin:6px 0!important}
+.v2-testimonials .feedback-widget-body>p:not(.feedback-stars){font-size:12px!important;line-height:1.4!important;margin:4px 0!important}
