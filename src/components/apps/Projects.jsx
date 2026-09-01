@@ -1,8 +1,10 @@
 import { useState } from "react";
 import projects from "../../data/projects";
 
-function Projects() {
-  const [selectedProject, setSelectedProject] = useState(null);
+function Projects({ initialProjectId = null }) {
+  const [selectedProject, setSelectedProject] = useState(() =>
+    projects.find((project) => project.id === initialProjectId) || null
+  );
 
   // ==============================
   // PROJECT DETAIL VIEW
@@ -40,6 +42,18 @@ function Projects() {
         <p className="project-detail-description">
           {selectedProject.description}
         </p>
+
+        {selectedProject.image && (
+          <figure className="project-detail-visual">
+            <div className="project-detail-visual-frame">
+              <img
+                src={selectedProject.image}
+                alt={`${selectedProject.title} project preview`}
+              />
+            </div>
+            <figcaption>PROJECT ARTIFACT · ORIGINAL INTERFACE</figcaption>
+          </figure>
+        )}
 
         <div className="project-detail-actions">
 

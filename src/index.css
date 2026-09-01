@@ -8,9 +8,7 @@ body,
   background: #000;
 }
 
-body {
-  overflow: hidden;
-}
+body { overflow-x: hidden; overflow-y: auto; }
 
 @media (max-width: 768px) {
   body,

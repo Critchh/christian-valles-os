@@ -41,51 +41,8 @@ const projects = [
 
     note:
       "Originally developed as my ITSE 1402 Python final project and expanded into a portfolio project.",
-  },
 
-  {
-    id: "clothing-shop",
-
-    title: "Mock Clothing Website",
-
-    category: "WEB DEVELOPMENT",
-
-    status: "Completed",
-
-    description:
-      "A responsive e-commerce-style clothing website built using HTML, CSS, and JavaScript with an emphasis on layout, navigation, and user experience.",
-
-    problem:
-      "The project explored how a traditional static website could be structured and styled to resemble a modern online clothing storefront.",
-
-    solution:
-      "I designed and developed a responsive storefront with product listings, navigation, mobile compatibility, and an AI-powered shopping assistant integration.",
-
-    technologies: [
-      "HTML",
-      "CSS",
-      "JavaScript",
-      "Chatbase",
-      "GitHub Pages",
-    ],
-
-    features: [
-      "Responsive storefront design",
-      "Product listing interface",
-      "Navigation system",
-      "Mobile-responsive layout",
-      "AI shopping assistant integration",
-      "GitHub-based deployment workflow",
-    ],
-
-    github:
-      "https://github.com/Critchh/Critch-Website",
-
-    liveDemo:
-      "https://critchh.github.io/Critch-Website/",
-
-    note:
-      "This project helped me explore front-end development beyond coursework and experiment with integrating an AI assistant into a traditional website.",
+    image: "/car-cost-calculator.png",
   },
 
   {
@@ -191,6 +148,8 @@ const projects = [
 
   note:
     "A physical and digital business solution designed to simplify the customer review process using NFC technology.",
+
+  image: "/nfc-review-products.png",
 },
   
 ];
