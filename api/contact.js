@@ -33,8 +33,9 @@ export default async function handler(request, response) {
     return response.status(400).json({ error: "Please complete every field with a valid email and message." });
   }
 
-  const { NEO_SMTP_HOST, NEO_SMTP_PORT, NEO_SMTP_USER, NEO_SMTP_PASS } = process.env;
-  if (!NEO_SMTP_HOST || !NEO_SMTP_USER || !NEO_SMTP_PASS) {
+  const { NEO_SMTP_PORT, NEO_SMTP_USER, NEO_SMTP_PASS } = process.env;
+  const NEO_SMTP_HOST = process.env.NEO_SMTP_HOST || "smtp0001.neo.space";
+  if (!NEO_SMTP_USER || !NEO_SMTP_PASS) {
     return response.status(503).json({ error: "The secure message channel is being configured. Please email christian@cvos.dev." });
   }
 

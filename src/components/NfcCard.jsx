@@ -16,10 +16,10 @@ function NfcCard() {
       >
         <span className="nfc-card-inner">
           <span className="nfc-face nfc-front">
-            <img src="/nfc-card-front.jpg" alt="Front of Christian Valles metal NFC business card" />
+            <img src="/nfc-card-front-safe.png" alt="Front of Christian Valles metal NFC business card" />
           </span>
           <span className="nfc-face nfc-back">
-            <img src="/nfc-card-back.jpg" alt="Back of Christian Valles metal NFC business card with QR code" />
+            <img src="/nfc-card-back-safe.png" alt="Back of Christian Valles metal NFC business card with decorative non-scannable code" />
             <span className="nfc-back-label"><Wifi size={16} /> DIGITAL CONTACT INTERFACE</span>
           </span>
         </span>

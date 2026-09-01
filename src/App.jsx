@@ -29,7 +29,7 @@ function App() {
   return (
     <main className="v2-shell">
       <header className="v2-nav"><div className="v2-nav-inner">
-        <a className="v2-brand" href="#top"><span className="v2-baybayin" aria-hidden="true">ᜃ᜔ᜊ᜔</span><span>CVOS</span><span className="v2-version">v2.0.0</span></a>
+        <a className="v2-brand" href="#top"><img className="v2-brand-mark" src="/cvos-brand-mark.png" alt="" /><span>CVOS</span><span className="v2-version">v2.0.0</span></a>
         <nav className="v2-links"><a href="#projects">Projects</a><a href="#intelligence">AI + NFC</a><button onClick={() => open("Skills")}>Skills</button><button onClick={() => open("Resume")}>Resume</button><button onClick={() => open("Contact")}>Contact</button></nav>
         <span className="v2-status">AVAILABLE FOR OPPORTUNITIES</span>
       </div></header>
