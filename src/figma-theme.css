@@ -1,0 +1,210 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=JetBrains+Mono:wght@400;500;600;700&display=swap");
+
+/* Figma high-fidelity visual layer. Structure and content remain owned by App.jsx. */
+:root {
+  --bg: #06070d;
+  --panel: rgba(8, 9, 20, 0.5);
+  --text: #c8cfe0;
+  --muted: #4e5468;
+  --dim: #1e2130;
+  --volt: #c9ff47;
+  --lumen: rgba(148, 182, 255, 0.55);
+  --lumen-mid: rgba(210, 228, 255, 0.92);
+  --lumen-broad: rgba(130, 170, 255, 0.07);
+  --lumen-surface: rgba(120, 160, 255, 0.03);
+  --hairline: rgba(255, 255, 255, 0.063);
+  --hairline-strong: rgba(255, 255, 255, 0.11);
+  --hairline-accent: rgba(201, 255, 71, 0.16);
+  --hairline-lumen: rgba(148, 182, 255, 0.18);
+}
+
+.v2-shell {
+  font-family: "Inter", sans-serif;
+  background:
+    radial-gradient(ellipse 65% 30% at 50% 105%, var(--lumen-broad), transparent 70%),
+    var(--bg);
+}
+
+.v2-nav {
+  background: rgba(6, 7, 13, 0.88);
+  border-bottom-color: var(--hairline);
+  backdrop-filter: blur(16px);
+}
+
+.v2-brand,
+.v2-hero h1,
+.v2-featured h2,
+.v2-section-heading h2,
+.v2-project h3,
+.v2-intelligence h3,
+.v2-overview h3,
+.v2-review-cta h2,
+.v2-conversion-card h3,
+.nfc-stage-heading strong,
+.v2-window-layer h1,
+.v2-window-layer h2,
+.v2-window-layer h3 {
+  font-family: "Outfit", sans-serif !important;
+}
+
+.v2-brand { letter-spacing: -0.035em; }
+.v2-hero h1 { font-weight: 900; letter-spacing: -0.04em; }
+.v2-section-heading h2,
+.v2-featured h2,
+.v2-project h3 { color: var(--text); font-weight: 700; }
+
+.v2-version,
+.v2-links a,
+.v2-links button,
+.v2-status,
+.v2-eyebrow,
+.v2-label,
+.v2-chip,
+.v2-project-link,
+.v2-text-button,
+.v2-metric span,
+.v2-tag,
+.v2-footer,
+.nfc-control,
+.nfc-stage-heading span,
+.feedback-show-all,
+.contact-v2-form label,
+.v2-window-layer .window-title,
+.v2-window-layer .app-eyebrow,
+.v2-window-layer .project-detail-label,
+.v2-window-layer .resume-section-label {
+  font-family: "JetBrains Mono", monospace !important;
+}
+
+.v2-eyebrow,
+.v2-label,
+.nfc-stage-heading span {
+  font-size: 0.595rem;
+  font-weight: 600;
+  letter-spacing: 0.145em;
+}
+
+.v2-links a,
+.v2-links button { font-size: 0.7rem; letter-spacing: 0.06em; }
+.v2-lede,
+.v2-featured p,
+.v2-project p,
+.v2-section-heading p,
+.v2-intelligence p,
+.v2-overview p,
+.v2-conversion-card p { color: var(--muted); }
+
+.v2-panel,
+.v2-metric,
+.v2-prompts button,
+.feedback-all-item,
+.contact-v2-form,
+.contact-v2-form input,
+.contact-v2-form textarea,
+.v2-window-layer .os-window,
+.v2-window-layer .project-detail-card,
+.v2-window-layer .project-feature,
+.v2-window-layer .project-note,
+.v2-window-layer .technology-list span {
+  border: 0 !important;
+  background:
+    radial-gradient(ellipse 90% 55% at 50% 118%, var(--lumen-broad) 0%, transparent 68%),
+    #090a14 !important;
+  box-shadow: inset 0 0 0 1px var(--hairline) !important;
+}
+
+.v2-panel { border-radius: 14px; }
+.v2-panel:hover { box-shadow: inset 0 0 0 1px var(--hairline-strong) !important; }
+.v2-grid-bg::before {
+  opacity: 1;
+  background-image: radial-gradient(circle, rgba(148, 182, 255, 0.055) 1px, transparent 1px);
+  background-size: 26px 26px;
+}
+
+.v2-button {
+  font-family: "Outfit", sans-serif;
+  border: 0 !important;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 115%, rgba(130, 170, 255, 0.05), transparent 70%),
+    transparent !important;
+  box-shadow: inset 0 0 0 1px var(--hairline-strong) !important;
+}
+
+.v2-button.primary {
+  color: #06070d;
+  background: var(--volt) !important;
+  box-shadow: none !important;
+}
+
+.v2-tag,
+.v2-chip,
+.nfc-control,
+.feedback-show-all,
+.contact-v2-links a,
+.v2-window-layer .window-control {
+  background:
+    radial-gradient(ellipse 80% 70% at 50% 120%, rgba(130, 170, 255, 0.05), transparent 70%),
+    #0d0f1c !important;
+  box-shadow: inset 0 0 0 1px var(--hairline) !important;
+}
+
+.v2-tag { color: var(--muted); }
+.v2-chip { color: #86efac; box-shadow: inset 0 0 0 1px rgba(134, 239, 172, 0.14) !important; }
+.v2-status { color: #86efac; }
+.v2-status::before { background: #86efac; box-shadow: 0 0 10px rgba(134, 239, 172, 0.75); }
+
+.v2-button::after,
+.v2-project-link::after,
+.v2-text-button::after,
+.v2-prompts button::after,
+.v2-tag::after,
+.nfc-control::after,
+.feedback-show-all::after,
+.contact-v2-links a::after,
+.v2-links a::after,
+.v2-links button::after,
+.v2-window-layer .window-control::after,
+.v2-project::after {
+  background: linear-gradient(90deg, transparent, var(--lumen) 28%, var(--lumen-mid) 50%, var(--lumen) 72%, transparent);
+}
+
+.v2-button.primary::after {
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.95) 50%, transparent);
+}
+
+.v2-metric strong,
+.volt,
+.v2-label,
+.v2-project-link,
+.v2-text-button,
+.nfc-stage-heading span { color: var(--volt); }
+
+.skill-progress-fill,
+.progress-fill,
+.proficiency-fill {
+  background: linear-gradient(90deg, var(--lumen), var(--lumen-mid) 60%, var(--volt)) !important;
+}
+
+.v2-window-layer .window-titlebar {
+  background:
+    radial-gradient(ellipse 70% 90% at 50% 130%, var(--lumen-broad), transparent 65%),
+    #090a14 !important;
+  border-bottom-color: var(--hairline) !important;
+}
+
+.v2-window-layer .window-content {
+  background:
+    radial-gradient(ellipse 85% 36% at 50% 112%, var(--lumen-broad), transparent 70%),
+    var(--bg) !important;
+}
+
+.contact-v2-form input:focus,
+.contact-v2-form textarea:focus {
+  border: 0 !important;
+  box-shadow: inset 0 0 0 1px var(--hairline-lumen), inset 0 -1px 0 var(--lumen) !important;
+}
+
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--dim); border-radius: 2px; }
+

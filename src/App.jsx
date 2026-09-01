@@ -2,6 +2,7 @@ import { useRef, useState } from "react";
 import { ArrowRight, Bot, Download, FileText, FolderCode, Mail, Sparkles } from "lucide-react";
 import "./App.css";
 import "./v2.css";
+import "./figma-theme.css";
 import OSWindow from "./components/OSWindow";
 import FeedbackWidget from "./components/FeedbackWidget";
 import NfcCard from "./components/NfcCard";
