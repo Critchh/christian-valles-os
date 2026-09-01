@@ -1,69 +1,60 @@
+import { useState } from "react";
+import { ArrowRight, Mail } from "lucide-react";
+
 function Contact() {
+  const [status, setStatus] = useState("idle");
+  const [message, setMessage] = useState("");
+
+  const submit = async (event) => {
+    event.preventDefault();
+    setStatus("sending");
+    setMessage("");
+    const form = new FormData(event.currentTarget);
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(Object.fromEntries(form.entries())),
+      });
+      const data = await response.json();
+      if (!response.ok) throw new Error(data.error || "Message could not be sent.");
+      event.currentTarget.reset();
+      setStatus("sent");
+      setMessage("Message received. I’ll get back to you as soon as possible.");
+    } catch (error) {
+      setStatus("error");
+      setMessage(error.message || "Message could not be sent. Please email christian@cvos.dev.");
+    }
+  };
+
   return (
-    <div className="contact-app">
-      <p className="app-eyebrow">CONNECT</p>
-
-      <h1>Contact</h1>
-
-      <p className="contact-intro">
-        Interested in working together, discussing a project,
-        or connecting professionally?
-      </p>
-
-      <div className="contact-grid">
-        <a
-          href="mailto:christianpol.valles@gmail.com"
-          className="contact-card"
-        >
-          <span className="contact-icon">@</span>
-
-          <div>
-            <p className="contact-label">EMAIL</p>
-            <h3>christianpol.valles@gmail.com</h3>
-          </div>
-        </a>
-
-        <a
-          href="https://github.com/Critchh"
-          target="_blank"
-          rel="noreferrer"
-          className="contact-card"
-        >
-          <span className="contact-icon">&lt;/&gt;</span>
-
-          <div>
-            <p className="contact-label">GITHUB</p>
-            <h3>github.com/Critchh</h3>
-          </div>
-        </a>
-
-        <a
-          href="https://www.linkedin.com/in/christian-pol-valles-58a2a2249/"
-          target="_blank"
-          rel="noreferrer"
-          className="contact-card"
-        >
-          <span className="contact-icon">in</span>
-
-          <div>
-            <p className="contact-label">LINKEDIN</p>
-            <h3>Connect professionally</h3>
-          </div>
-        </a>
-
-        <a
-          href="/christian-valles.vcf"
-          download
-          className="contact-card"
-        >
-          <span className="contact-icon">+</span>
-
-          <div>
-            <p className="contact-label">CONTACT CARD</p>
-            <h3>Save Contact</h3>
-          </div>
-        </a>
+    <div className="contact-app contact-v2">
+      <div className="contact-v2-intro">
+        <p className="app-eyebrow">SECURE MESSAGE CHANNEL</p>
+        <h1>Let’s build something.</h1>
+        <p>Send a project inquiry, opportunity, or professional message directly to my CVOS inbox.</p>
+        <a className="contact-v2-email" href="mailto:christian@cvos.dev"><Mail size={17} /> christian@cvos.dev</a>
+        <div className="contact-v2-links">
+          <a href="https://github.com/Critchh" target="_blank" rel="noreferrer"><span>&lt;/&gt;</span> GitHub</a>
+          <a href="https://www.linkedin.com/in/christian-pol-valles-58a2a2249/" target="_blank" rel="noreferrer"><span>in</span> LinkedIn</a>
+        </div>
       </div>
+
+      <form className="contact-v2-form" onSubmit={submit}>
+        <div className="contact-field-row">
+          <label>Name<input name="name" required maxLength={80} autoComplete="name" /></label>
+          <label>Email<input name="email" type="email" required maxLength={120} autoComplete="email" /></label>
+        </div>
+        <label>Subject<input name="subject" required maxLength={120} /></label>
+        <label>Message<textarea name="message" required minLength={20} maxLength={3000} rows={7} /></label>
+        <label className="contact-honeypot" aria-hidden="true">Website<input name="website" tabIndex={-1} autoComplete="off" /></label>
+        <div className="contact-form-footer">
+          <span>Protected by validation, rate limiting, and a spam trap.</span>
+          <button type="submit" disabled={status === "sending"}>{status === "sending" ? "Sending…" : "Send message"} <ArrowRight size={16} /></button>
+        </div>
+        {message && <p className={`contact-form-status ${status}`} role="status">{message}</p>}
+      </form>
     </div>
   );
 }

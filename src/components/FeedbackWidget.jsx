@@ -3,11 +3,13 @@ import { supabase } from "../lib/supabase";
 
 function FeedbackWidget({
   onLeaveFeedback,
+  showLeaveAction = true,
 }) {
   const [reviews, setReviews] = useState([]);
   const [index, setIndex] = useState(0);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
+  const [showAll, setShowAll] = useState(false);
 
   const loadReviews = useCallback(
     async (manualRefresh = false) => {
@@ -49,7 +51,8 @@ function FeedbackWidget({
   );
 
   useEffect(() => {
-    loadReviews();
+    const timer = setTimeout(() => loadReviews(), 0);
+    return () => clearTimeout(timer);
   }, [loadReviews]);
 
   useEffect(() => {
@@ -107,12 +110,11 @@ function FeedbackWidget({
             after completed deployments.
           </p>
 
-          <button
-            className="feedback-leave-button"
-            onClick={onLeaveFeedback}
-          >
-            Leave Feedback
-          </button>
+          {showLeaveAction && (
+            <button className="feedback-leave-button" onClick={onLeaveFeedback}>
+              Leave Feedback
+            </button>
+          )}
 
         </div>
 
@@ -192,6 +194,30 @@ function FeedbackWidget({
 
       </div>
 
+      {reviews.length > 1 && (
+        <button
+          className="feedback-show-all"
+          onClick={() => setShowAll((current) => !current)}
+        >
+          {showAll ? "Show Featured" : `Show All (${reviews.length})`}
+        </button>
+      )}
+
+      {showAll && (
+        <div className="feedback-all-list">
+          {reviews.map((item) => (
+            <article className="feedback-all-item" key={item.id}>
+              <div className="feedback-all-stars">
+                {"★".repeat(item.rating)}{"☆".repeat(5 - item.rating)}
+              </div>
+              <blockquote>“{item.quote}”</blockquote>
+              <strong>{item.author}</strong>
+              <span>{item.business}{item.location ? ` • ${item.location}` : ""}</span>
+            </article>
+          ))}
+        </div>
+      )}
+
 
       <div className="feedback-widget-footer">
         <span>CLIENT FEEDBACK</span>
@@ -199,12 +225,11 @@ function FeedbackWidget({
       </div>
 
 
-      <button
-        className="feedback-leave-button"
-        onClick={onLeaveFeedback}
-      >
-        Leave Feedback
-      </button>
+      {showLeaveAction && (
+        <button className="feedback-leave-button" onClick={onLeaveFeedback}>
+          Leave Feedback
+        </button>
+      )}
 
     </aside>
   );

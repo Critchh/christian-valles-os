@@ -1,8 +1,9 @@
 import { useRef, useState } from "react";
-import { ArrowRight, Bot, Download, FileText, FolderCode, Mail, MessageSquare, Sparkles } from "lucide-react";
+import { ArrowRight, Bot, Download, FileText, FolderCode, Mail, Sparkles } from "lucide-react";
 import "./App.css";
 import "./v2.css";
 import OSWindow from "./components/OSWindow";
+import FeedbackWidget from "./components/FeedbackWidget";
 import NfcCard from "./components/NfcCard";
 import Projects from "./components/apps/Projects";
 import Resume from "./components/apps/Resume";
@@ -28,7 +29,7 @@ function App() {
   return (
     <main className="v2-shell">
       <header className="v2-nav"><div className="v2-nav-inner">
-        <a className="v2-brand" href="#top">CVOS <span className="v2-version">v2.0.0</span></a>
+        <a className="v2-brand" href="#top"><span className="v2-baybayin" aria-hidden="true">ᜃ᜔ᜊ᜔</span><span>CVOS</span><span className="v2-version">v2.0.0</span></a>
         <nav className="v2-links"><a href="#projects">Projects</a><a href="#intelligence">AI + NFC</a><button onClick={() => open("Skills")}>Skills</button><button onClick={() => open("Resume")}>Resume</button><button onClick={() => open("Contact")}>Contact</button></nav>
         <span className="v2-status">AVAILABLE FOR OPPORTUNITIES</span>
       </div></header>
@@ -39,6 +40,8 @@ function App() {
           <article className="v2-panel v2-featured"><div className="v2-panel-head"><span className="v2-label">Featured project</span><span className="v2-chip">IN DEVELOPMENT</span></div><h2>Christian Valles OS</h2><p>{featured?.description}</p><div className="v2-metrics"><Metric label="RELEASE" value="2.0" /><Metric label="AI CORE" value="GEMINI" /><Metric label="DATA" value="SUPABASE" /></div><Tags items={featured?.technologies.slice(0, 5)} /><button className="v2-project-link" onClick={() => openProject(featured.id)}>View case study &nbsp; →</button></article>
         </section>
 
+        <section className="v2-trust-row" aria-label="Client feedback"><div className="v2-panel v2-testimonials"><FeedbackWidget showLeaveAction={false} onLeaveFeedback={() => open("Feedback")} /></div><article className="v2-panel v2-review-cta"><div><span className="v2-eyebrow">CLIENT EXPERIENCE</span><h2>How was your experience?</h2><p>Share a verified review from a project, support interaction, or collaboration.</p></div><button className="v2-button primary" onClick={() => open("Feedback")}>Leave a review <Sparkles size={15} /></button></article></section>
+
         <section className="v2-section" id="projects"><SectionHead eyebrow="SELECTED PROJECTS" title="Proof through practical work." copy="Real projects across web development, software, NFC, and customer experience." /><div className="v2-project-grid">{selected.map((project, index) => <article className="v2-panel v2-project" key={project.id}><div className="v2-panel-head"><span className="v2-project-number">0{index + 1}</span><span className="v2-chip">{project.status}</span></div><span className="v2-eyebrow">{project.category}</span><h3>{project.title}</h3><p>{project.description}</p><Tags items={project.technologies.slice(0, 5)} /><button className="v2-project-link" onClick={() => openProject(project.id)}>View project &nbsp; →</button></article>)}</div></section>
 
         <section className="v2-section" id="intelligence"><SectionHead eyebrow="AI ASSISTANT + PORTFOLIO INTELLIGENCE" title="More than a static portfolio." copy="Ask questions, explore the system, or connect through a real NFC interface." /><div className="v2-panel v2-intelligence">
@@ -47,7 +50,7 @@ function App() {
           <div className="v2-overview"><span className="v2-eyebrow">PORTFOLIO OVERVIEW</span><div className="v2-overview-grid"><Metric label="PROJECTS" value={projects.length} /><Metric label="CERTS" value={portfolio.certifications.length} /><Metric label="FOCUS" value="IT + DEV" /><Metric label="STATUS" value="OPEN" /></div><div className="v2-overview-copy"><span className="v2-label">Core strength</span><p>Practical systems, technical troubleshooting, and clear customer-focused experiences.</p><button className="v2-project-link" onClick={() => open("Skills")}>Explore skills &nbsp; →</button></div></div>
         </div></section>
 
-        <section className="v2-section v2-conversion"><Conversion icon={<FileText />} title="Resume & credentials" copy="Education, certifications, experience, and technical skills."><a className="v2-button primary" href="/resume.pdf" download>Download PDF <Download size={15} /></a><button className="v2-button" onClick={() => open("Resume")}>View online</button></Conversion><Conversion icon={<Mail />} title="Let’s build something" copy="Have a project in mind, an opportunity, or just want to connect?"><button className="v2-button" onClick={() => open("Contact")}>Contact me <ArrowRight size={15} /></button></Conversion><Conversion icon={<MessageSquare />} title="How was your experience?" copy="Your feedback helps improve future projects and client work."><button className="v2-button primary" onClick={() => open("Feedback")}>Leave a review <Sparkles size={15} /></button></Conversion></section>
+        <section className="v2-section v2-conversion"><Conversion icon={<FileText />} title="Resume & credentials" copy="Education, certifications, experience, and technical skills."><a className="v2-button primary" href="/resume.pdf" download>Download PDF <Download size={15} /></a><button className="v2-button" onClick={() => open("Resume")}>View online</button></Conversion><Conversion icon={<Mail />} title="Let’s build something" copy="Have a project in mind, an opportunity, or just want to connect?"><button className="v2-button" onClick={() => open("Contact")}>Contact me <ArrowRight size={15} /></button></Conversion></section>
         <footer className="v2-footer"><strong>CVOS · CHRISTIAN VALLES OS · 2026</strong><span>BUILT WITH REACT · VITE · INTENTIONAL CRAFT</span></footer>
       </div>
 
