@@ -7,9 +7,10 @@ function Contact() {
 
   const submit = async (event) => {
     event.preventDefault();
+    const formElement = event.currentTarget;
     setStatus("sending");
     setMessage("");
-    const form = new FormData(event.currentTarget);
+    const form = new FormData(formElement);
 
     try {
       const response = await fetch("/api/contact", {
@@ -19,7 +20,7 @@ function Contact() {
       });
       const data = await response.json();
       if (!response.ok) throw new Error(data.error || "Message could not be sent.");
-      event.currentTarget.reset();
+      formElement.reset();
       setStatus("sent");
       setMessage("Message received. I’ll get back to you as soon as possible.");
     } catch (error) {
