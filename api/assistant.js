@@ -21,6 +21,8 @@ Do not invent information.
 If you do not know something, clearly say that the information is not available in the portfolio.
 
 Keep responses concise, professional, and conversational.
+Return plain text only. Do not use Markdown, asterisks, hash headings, or hyphen-prefixed lists.
+When several points are useful, write short labeled sentences or use numbered lines without Markdown styling.
 
 ABOUT CHRISTIAN:
 Christian Valles is an Information Technology student and developer based in McAllen, Texas.
@@ -154,6 +156,17 @@ GitHub: https://github.com/Critchh
 
 The Contact application inside Christian Valles OS also provides LinkedIn information and a downloadable contact card.
 `;
+
+function normalizeAssistantReply(value) {
+  return value
+    .replace(/\*\*(.*?)\*\*/gs, "$1")
+    .replace(/__(.*?)__/gs, "$1")
+    .replace(/`{1,3}([^`]+)`{1,3}/g, "$1")
+    .replace(/^\s*#{1,6}\s+/gm, "")
+    .replace(/^\s*[-*]\s+/gm, "• ")
+    .replace(/\n{3,}/g, "\n\n")
+    .trim();
+}
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {
@@ -325,7 +338,7 @@ export default async function handler(req, res) {
     }
 
     return res.status(200).json({
-      reply,
+      reply: normalizeAssistantReply(reply),
     });
 
   } catch (error) {

@@ -728,12 +728,6 @@
 .cvos-architecture-node:not(:last-child)::after { content: "→"; position: absolute; right: -10px; top: 50%; z-index: 2; color: var(--volt); }
 .cvos-architecture-node span { color: #50596d; font: 700 .62rem "Space Mono", monospace; }
 .cvos-architecture-node strong { color: #c8cfe0; font-size: .76rem; line-height: 1.4; }
-.cvos-roadmap { display: grid; gap: 8px; }
-.cvos-roadmap article { display: grid; grid-template-columns: 70px 1fr auto; gap: 18px; align-items: center; padding: 17px 19px; border-radius: 10px; background: #090a14; box-shadow: inset 0 0 0 1px var(--hairline); }
-.cvos-roadmap article > span { color: var(--volt); font: 700 .68rem "Space Mono", monospace; }
-.cvos-roadmap h3 { margin: 0 0 4px; font-size: .92rem !important; }
-.cvos-roadmap p { margin: 0; color: var(--muted); font-size: .78rem; line-height: 1.5; }
-.cvos-roadmap small { color: #687188; font: 700 .56rem "Space Mono", monospace; letter-spacing: .11em; }
 .cvos-case-note { margin-top: 28px; }
 
 /* Mobile dock: dark glass rail with a static Lumen edge on every tap target. */
@@ -784,10 +778,63 @@
   .cvos-architecture-flow { grid-template-columns: 1fr; }
   .cvos-architecture-node { min-height: 86px; }
   .cvos-architecture-node:not(:last-child)::after { content: "↓"; right: 18px; top: auto; bottom: -12px; }
-  .cvos-roadmap article { grid-template-columns: 54px 1fr; }
-  .cvos-roadmap small { grid-column: 2; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .v2-ask-button svg,.v2-ask-letter { animation: none; }
+}
+
+/* Star-field motion from the supplied card, reduced into the Lumen palette. */
+.v2-featured {
+  overflow: hidden;
+  isolation: isolate;
+  background:
+    radial-gradient(ellipse 90% 54% at 50% 118%, rgba(130,170,255,.105), transparent 68%),
+    radial-gradient(circle at 78% 22%, rgba(94,131,202,.08), transparent 38%),
+    #090a14 !important;
+}
+.cvos-featured-content { position: relative; z-index: 2; display: flex; flex: 1; flex-direction: column; justify-content: center; }
+.cvos-featured-stars { position: absolute; z-index: 0; inset: 0; overflow: hidden; pointer-events: none; opacity: .72; mask-image: linear-gradient(110deg, transparent 2%, #000 38%, #000 100%); }
+.cvos-featured-stars i { position: absolute; inset: -80% 0 0; background-repeat: repeat; will-change: transform; }
+.cvos-featured-stars i:nth-child(1) {
+  background-image:
+    radial-gradient(circle, rgba(221,235,255,.78) 0 1px, transparent 1.35px),
+    radial-gradient(circle, rgba(148,182,255,.55) 0 .75px, transparent 1.15px);
+  background-position: 8px 12px, 36px 44px;
+  background-size: 54px 58px, 71px 77px;
+  animation: cvos-star-drift 52s linear infinite;
+}
+.cvos-featured-stars i:nth-child(2) {
+  background-image: radial-gradient(circle, rgba(201,255,71,.42) 0 1px, transparent 1.55px);
+  background-position: 24px 8px;
+  background-size: 107px 113px;
+  filter: drop-shadow(0 0 3px rgba(201,255,71,.18));
+  animation: cvos-star-drift 78s linear infinite;
+}
+.cvos-featured-stars i:nth-child(3) {
+  background-image: radial-gradient(circle, rgba(210,228,255,.45) 0 1.4px, transparent 1.9px);
+  background-position: 53px 37px;
+  background-size: 151px 139px;
+  filter: blur(.15px) drop-shadow(0 0 4px rgba(148,182,255,.22));
+  animation: cvos-star-drift 105s linear infinite;
+}
+.v2-featured::before { content: ""; position: absolute; z-index: 1; inset: 0; pointer-events: none; background: linear-gradient(90deg, rgba(9,10,20,.92) 0%, rgba(9,10,20,.55) 48%, rgba(9,10,20,.1) 100%); }
+.v2-featured:hover .cvos-featured-stars { opacity: .95; }
+@keyframes cvos-star-drift { from { transform: translateY(0); } to { transform: translateY(-42%); } }
+
+.cvos-snapshot-grid { display: grid; gap: 14px; }
+.cvos-snapshot { margin: 0; overflow: hidden; border-radius: 12px; background: radial-gradient(ellipse 90% 48% at 50% 118%, var(--lumen-broad), transparent 68%), #090a14; box-shadow: inset 0 0 0 1px var(--hairline); }
+.cvos-snapshot-frame { padding: 9px; }
+.cvos-snapshot-frame img { display: block; width: 100%; height: auto; border-radius: 8px; box-shadow: 0 18px 55px rgba(0,0,0,.32); }
+.cvos-snapshot figcaption { display: grid; grid-template-columns: minmax(150px,.35fr) 1fr; gap: 20px; padding: 5px 20px 22px; }
+.cvos-snapshot figcaption span { color: var(--volt); font: 700 .62rem "Space Mono", monospace; letter-spacing: .09em; }
+.cvos-snapshot figcaption p { margin: 0; color: var(--muted); font-size: .78rem; line-height: 1.55; }
+.v2-window-layer .assistant-message p { white-space: pre-line; }
+
+@media (max-width: 760px) {
+  .cvos-snapshot figcaption { grid-template-columns: 1fr; gap: 8px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cvos-featured-stars i { animation: none; }
 }

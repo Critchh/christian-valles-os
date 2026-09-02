@@ -303,6 +303,13 @@ function CvosCaseStudy({ project, onBack }) {
         ))}
       </section>
 
+      {caseStudy.snapshots?.length > 0 && (
+        <section className="cvos-case-section">
+          <div className="cvos-case-heading"><p className="project-detail-label">INTERFACE ARCHIVE</p><h2>How CVOS evolved visually.</h2></div>
+          <div className="cvos-snapshot-grid">{caseStudy.snapshots.map((snapshot) => <figure className="cvos-snapshot" key={snapshot.version}><div className="cvos-snapshot-frame"><img src={snapshot.image} alt={`${snapshot.version} CVOS interface snapshot`} /></div><figcaption><span>{snapshot.version} · {snapshot.label}</span><p>{snapshot.description}</p></figcaption></figure>)}</div>
+        </section>
+      )}
+
       <section className="cvos-case-section">
         <div className="cvos-case-heading"><p className="project-detail-label">V2 SYSTEM FEATURES</p><h2>What the platform does now.</h2></div>
         <div className="project-feature-grid">{caseStudy.currentFeatures.map((feature) => <div className="project-feature" key={feature}><span>+</span><p>{feature}</p></div>)}</div>
@@ -311,11 +318,6 @@ function CvosCaseStudy({ project, onBack }) {
       <section className="cvos-case-section cvos-architecture">
         <div className="cvos-case-heading"><p className="project-detail-label">SYSTEM ARCHITECTURE</p><h2>Portfolio, services, and physical touchpoints.</h2></div>
         <div className="cvos-architecture-flow">{caseStudy.architecture.map((layer, index) => <div className="cvos-architecture-node" key={layer}><span>0{index + 1}</span><strong>{layer}</strong></div>)}</div>
-      </section>
-
-      <section className="cvos-case-section">
-        <div className="cvos-case-heading"><p className="project-detail-label">ROADMAP</p><h2>Planned evolution.</h2></div>
-        <div className="cvos-roadmap">{caseStudy.roadmap.map((item) => <article key={item.version}><span>{item.version}</span><div><h3>{item.title}</h3><p>{item.description}</p></div><small>{item.status}</small></article>)}</div>
       </section>
 
       <aside className="project-note cvos-case-note"><span>DEPLOYMENT MILESTONE</span><p>{caseStudy.deploymentNote}</p></aside>

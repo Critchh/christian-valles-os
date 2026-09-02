@@ -137,11 +137,13 @@ const projects = [
         "Neo SMTP domain delivery",
         "NFC physical access layer",
       ],
-      roadmap: [
-        { version: "V2.1", title: "Case-study media", description: "Add curated desktop and mobile screenshots once the V2 visual system is locked.", status: "NEXT" },
-        { version: "V2.2", title: "Review archive", description: "Expand Show All into a complete approved-review browsing experience.", status: "PLANNED" },
-        { version: "V2.3", title: "Assistant depth", description: "Add richer project context, guided prompts, and grounded portfolio responses.", status: "PLANNED" },
-        { version: "V3.0", title: "Client-ready system layer", description: "Explore modular client portals and deeper NFC destination management without compromising the portfolio core.", status: "RESEARCH" },
+      snapshots: [
+        {
+          version: "V1.0.0",
+          label: "OS-FIRST INTERFACE",
+          image: "/cvos-v1-snapshot.png",
+          description: "The previous CVOS homepage centered the operating-system metaphor in a bright dashboard layout before V2 shifted toward a scroll-first portfolio.",
+        },
       ],
       deploymentNote:
         "V2 uses Vercel preview deployments for review before production. The contact system now routes validated in-frame messages through Neo SMTP to christian@cvos.dev, keeping mailbox credentials server-side.",

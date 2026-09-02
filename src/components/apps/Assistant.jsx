@@ -1,5 +1,16 @@
 import { useEffect, useRef, useState } from "react";
 
+function normalizeAssistantReply(value = "") {
+  return value
+    .replace(/\*\*(.*?)\*\*/gs, "$1")
+    .replace(/__(.*?)__/gs, "$1")
+    .replace(/`{1,3}([^`]+)`{1,3}/g, "$1")
+    .replace(/^\s*#{1,6}\s+/gm, "")
+    .replace(/^\s*[-*]\s+/gm, "• ")
+    .replace(/\n{3,}/g, "\n\n")
+    .trim();
+}
+
 function Assistant({ initialQuestion = "" }) {
   const [messages, setMessages] = useState([
     {
@@ -83,7 +94,7 @@ function Assistant({ initialQuestion = "" }) {
         ...currentMessages,
         {
           role: "assistant",
-          text: data.reply,
+          text: normalizeAssistantReply(data.reply),
         },
       ]);
     } catch (error) {
