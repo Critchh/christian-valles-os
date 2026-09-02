@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { ArrowRight, Bot, Download, FileText, FolderCode, Mail, Sparkles } from "lucide-react";
+import { ArrowRight, Bot, Download, FileText, FolderCode, Globe2, Mail, Paperclip, Send, Sparkles } from "lucide-react";
 import "./App.css";
 import "./v2.css";
 import "./figma-theme.css";
@@ -15,16 +15,24 @@ import FeedbackForm from "./components/apps/FeedbackForm";
 import projects from "./data/projects";
 import portfolio from "./data/portfolio";
 
-const staticContent = { Projects: <Projects />, Resume: <Resume />, Skills: <Skills />, Contact: <Contact />, "AI Assistant": <Assistant />, Feedback: <FeedbackForm /> };
+const staticContent = { Projects: <Projects />, Resume: <Resume />, Skills: <Skills />, Contact: <Contact />, Feedback: <FeedbackForm /> };
 const featured = projects.find((item) => item.id === "portfolio-os");
 const selected = [featured, projects.find((item) => item.id === "nfc-review-system"), projects.find((item) => item.id === "car-cost-calculator")].filter(Boolean);
 
 function App() {
   const [windows, setWindows] = useState({});
+  const [assistantDraft, setAssistantDraft] = useState("");
+  const [assistantSeed, setAssistantSeed] = useState("");
   const z = useRef(100);
   const open = (name) => { z.current += 1; setWindows((all) => ({ ...all, [name]: { open: true, zIndex: z.current } })); };
   const openProject = (projectId) => open(`Project:${projectId}`);
   const close = (name) => setWindows((all) => ({ ...all, [name]: { ...all[name], open: false } }));
+  const askAssistant = (question = assistantDraft) => {
+    const cleanedQuestion = question.trim();
+    if (cleanedQuestion) setAssistantSeed(cleanedQuestion);
+    setAssistantDraft("");
+    open("AI Assistant");
+  };
   const activeZ = Math.max(0, ...Object.values(windows).filter((item) => item?.open).map((item) => item.zIndex || 0));
 
   return (
@@ -46,7 +54,7 @@ function App() {
         <section className="v2-section" id="projects"><SectionHead eyebrow="SELECTED PROJECTS" title="Proof through practical work." copy="Real projects across web development, software, NFC, and customer experience." /><div className="v2-project-grid">{selected.map((project, index) => <article className="v2-panel v2-project" key={project.id}><div className="v2-panel-head"><span className="v2-project-number">0{index + 1}</span><span className="v2-chip">{project.status}</span></div><span className="v2-eyebrow">{project.category}</span><h3>{project.title}</h3><p>{project.description}</p><Tags items={project.technologies.slice(0, 5)} /><button className="v2-project-link" onClick={() => openProject(project.id)}>View project &nbsp; →</button></article>)}</div></section>
 
         <section className="v2-section" id="intelligence"><SectionHead eyebrow="AI ASSISTANT + PORTFOLIO INTELLIGENCE" title="More than a static portfolio." copy="Ask questions, explore the system, or connect through a real NFC interface." /><div className="v2-panel v2-intelligence">
-          <div className="v2-intelligence-copy"><span className="v2-label">Gemini powered</span><h3>Ask CVOS</h3><p>Get a focused overview of my work, background, skills, and experience.</p><div className="v2-prompts"><button onClick={() => open("AI Assistant")}>What projects has Christian built?</button><button onClick={() => open("AI Assistant")}>What are Christian's strongest skills?</button><button onClick={() => open("AI Assistant")}>Is Christian available?</button></div><button className="v2-button primary" onClick={() => open("AI Assistant")}>Open assistant <ArrowRight size={16} /></button></div>
+          <div className="v2-intelligence-copy"><span className="v2-label">Gemini powered</span><h3>Ask CVOS</h3><p>Get a focused overview of my work, background, skills, and experience.</p><form className="v2-ai-composer" onSubmit={(event) => { event.preventDefault(); askAssistant(); }}><textarea value={assistantDraft} onChange={(event) => setAssistantDraft(event.target.value)} onKeyDown={(event) => { if (event.key === "Enter" && !event.shiftKey) { event.preventDefault(); askAssistant(); } }} placeholder="Ask about Christian's work... ✦" aria-label="Ask CVOS a question" /><div className="v2-ai-composer-tools"><div><button type="button" disabled title="Attachments coming soon" aria-label="Attachments coming soon"><Paperclip size={17} /></button><button type="button" disabled title="Web sources coming soon" aria-label="Web sources coming soon"><Globe2 size={17} /></button></div><button className="v2-ai-send" type="submit" aria-label="Send question" disabled={!assistantDraft.trim()}><Send size={17} /></button></div></form><div className="v2-prompts"><button onClick={() => askAssistant("What projects has Christian built?")}>Projects</button><button onClick={() => askAssistant("What are Christian's strongest skills?")}>Strongest skills</button><button onClick={() => askAssistant("Is Christian available?")}>Availability</button></div></div>
           <NfcCard />
           <div className="v2-overview"><span className="v2-eyebrow">PORTFOLIO OVERVIEW</span><div className="v2-overview-grid"><Metric label="PROJECTS" value={projects.length} /><Metric label="CERTS" value={portfolio.certifications.length} /><Metric label="FOCUS" value="IT + DEV" /><Metric label="STATUS" value="OPEN" /></div><div className="v2-overview-copy"><span className="v2-label">Core strength</span><p>Practical systems, technical troubleshooting, and clear customer-focused experiences.</p><button className="v2-project-link" onClick={() => open("Skills")}>Explore skills &nbsp; →</button></div></div>
         </div></section>
@@ -60,7 +68,7 @@ function App() {
         if (!state.open) return null;
         const projectId = name.startsWith("Project:") ? name.slice(8) : null;
         const project = projectId ? projects.find((item) => item.id === projectId) : null;
-        return <OSWindow key={name} title={project?.title || name} zIndex={state.zIndex} isActive={state.zIndex === activeZ} defaultOffset={index} onFocus={() => open(name)} onClose={() => close(name)} onMinimize={() => close(name)}>{projectId ? <Projects initialProjectId={projectId} /> : staticContent[name]}</OSWindow>;
+        return <OSWindow key={name} title={project?.title || name} zIndex={state.zIndex} isActive={state.zIndex === activeZ} defaultOffset={index} onFocus={() => open(name)} onClose={() => close(name)} onMinimize={() => close(name)}>{projectId ? <Projects initialProjectId={projectId} /> : name === "AI Assistant" ? <Assistant initialQuestion={assistantSeed} /> : staticContent[name]}</OSWindow>;
       })}</div>
     </main>
   );

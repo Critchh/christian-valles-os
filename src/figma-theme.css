@@ -208,3 +208,152 @@
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: var(--dim); border-radius: 2px; }
 
+/* Uiverse-inspired assistant composer, translated into Lumen Edge. */
+.v2-ai-composer {
+  position: relative;
+  overflow: hidden;
+  margin-top: 18px;
+  border-radius: 14px;
+  background:
+    radial-gradient(ellipse 85% 70% at 50% 118%, var(--lumen-broad), transparent 70%),
+    linear-gradient(145deg, #111425, #090a14);
+  box-shadow:
+    inset 0 0 0 1px var(--hairline-strong),
+    inset 0 1px 0 rgba(210, 228, 255, 0.04),
+    0 18px 38px rgba(0, 0, 0, 0.2);
+}
+
+.v2-ai-composer::before {
+  content: "";
+  position: absolute;
+  top: -18px;
+  left: -18px;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--lumen-mid), rgba(148, 182, 255, 0.2) 34%, transparent 72%);
+  filter: blur(5px);
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.v2-ai-composer textarea {
+  display: block;
+  width: 100%;
+  height: 76px;
+  resize: none;
+  border: 0;
+  outline: 0;
+  padding: 14px 15px 8px;
+  color: var(--text);
+  background: transparent;
+  font: 400 0.78rem/1.5 "Inter", sans-serif;
+}
+
+.v2-ai-composer textarea::placeholder { color: #737b91; transition: color 0.2s ease; }
+.v2-ai-composer textarea:focus::placeholder { color: var(--muted); }
+.v2-ai-composer:focus-within {
+  box-shadow:
+    inset 0 0 0 1px var(--hairline-lumen),
+    inset 0 -1px 0 var(--lumen),
+    0 20px 44px rgba(0, 0, 0, 0.24);
+}
+
+.v2-ai-composer-tools {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 7px 9px 9px;
+}
+
+.v2-ai-composer-tools > div { display: flex; gap: 3px; }
+.v2-ai-composer-tools button {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 0;
+  border-radius: 9px;
+  color: #697188;
+  background: transparent;
+}
+.v2-ai-composer-tools button:disabled { cursor: default; opacity: 0.42; }
+
+.v2-ai-composer-tools .v2-ai-send {
+  position: relative;
+  overflow: hidden;
+  color: #06070d;
+  background: var(--volt);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 0 18px rgba(201, 255, 71, 0.08);
+  cursor: pointer;
+  transition: transform 0.16s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+}
+.v2-ai-composer-tools .v2-ai-send:disabled { cursor: default; opacity: 0.28; }
+.v2-ai-composer-tools .v2-ai-send:not(:disabled):hover {
+  transform: translateY(-2px);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45), 0 0 22px rgba(201, 255, 71, 0.16);
+}
+.v2-ai-composer-tools .v2-ai-send:not(:disabled):active { transform: scale(0.93); }
+
+.v2-intelligence-copy .v2-prompts {
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin: 10px 0 0;
+}
+.v2-intelligence-copy .v2-prompts button {
+  width: auto;
+  padding: 6px 9px;
+  border-radius: 10px;
+  font-family: "JetBrains Mono", monospace !important;
+  font-size: 0.58rem !important;
+  font-weight: 500 !important;
+  color: var(--muted);
+  background: #0d0f1c !important;
+  box-shadow: inset 0 0 0 1px var(--hairline) !important;
+}
+
+/* Uiverse shine response adapted to the hero with the project-card lumen palette. */
+.v2-hero-copy {
+  isolation: isolate;
+  overflow: hidden;
+  transition: box-shadow 0.34s ease, transform 0.34s ease;
+}
+.v2-hero-copy > * { position: relative; z-index: 2; }
+.v2-hero-copy::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  top: -24%;
+  right: -18%;
+  width: 54%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(210, 228, 255, 0.25), rgba(148, 182, 255, 0.1) 34%, transparent 70%);
+  filter: blur(26px);
+  mix-blend-mode: screen;
+  opacity: 0;
+  transform: translate3d(10%, -8%, 0) scale(0.82);
+  transition: opacity 0.36s ease, transform 0.5s cubic-bezier(.2,.7,.2,1);
+  pointer-events: none;
+}
+.v2-hero-copy:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    inset 0 0 0 1px var(--hairline-lumen),
+    inset 0 -1px 0 rgba(148, 182, 255, 0.3),
+    -18px 24px 54px rgba(20, 35, 70, 0.15),
+    18px 28px 70px rgba(0, 0, 0, 0.28) !important;
+}
+.v2-hero-copy:hover::after {
+  opacity: 0.82;
+  transform: translate3d(-15%, 13%, 0) scale(1.16);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .v2-hero-copy,
+  .v2-hero-copy::after,
+  .v2-ai-composer-tools .v2-ai-send { transition: none; }
+  .v2-hero-copy:hover { transform: none; }
+}

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-function Assistant() {
+function Assistant({ initialQuestion = "" }) {
   const [messages, setMessages] = useState([
     {
       role: "assistant",
@@ -13,6 +13,7 @@ function Assistant() {
   const [loading, setLoading] = useState(false);
 
   const chatEndRef = useRef(null);
+  const initialQuestionRef = useRef("");
 
   useEffect(() => {
     chatEndRef.current?.scrollIntoView({
@@ -103,6 +104,13 @@ function Assistant() {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    const cleanedQuestion = initialQuestion.trim();
+    if (!cleanedQuestion || initialQuestionRef.current === cleanedQuestion) return;
+    initialQuestionRef.current = cleanedQuestion;
+    sendMessage(cleanedQuestion);
+  }, [initialQuestion]);
 
   const quickQuestions = [
     "What are your best projects?",
