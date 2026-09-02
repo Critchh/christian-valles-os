@@ -357,3 +357,242 @@
   .v2-ai-composer-tools .v2-ai-send { transition: none; }
   .v2-hero-copy:hover { transform: none; }
 }
+
+/* Keep every selective OS app on the same dusk / Lumen surface system. */
+.v2-window-layer .assistant-app,
+.v2-window-layer .skills-app,
+.v2-window-layer .resume-app {
+  color: var(--text);
+}
+
+.v2-window-layer .assistant-header h1,
+.v2-window-layer .skills-app h1,
+.v2-window-layer .resume-header h1,
+.v2-window-layer .skill-section h3,
+.v2-window-layer .resume-entry h3,
+.v2-window-layer .certification-item p {
+  color: var(--text) !important;
+}
+
+.v2-window-layer .assistant-header > p:last-child,
+.v2-window-layer .resume-subtitle,
+.v2-window-layer .resume-entry p,
+.v2-window-layer .resume-entry ul {
+  color: #737b91 !important;
+}
+
+/* Assistant: remove the inherited white chat canvas and mismatched green hover. */
+.v2-window-layer .assistant-quick-actions button {
+  color: #778097 !important;
+  background:
+    radial-gradient(ellipse 90% 95% at 50% 145%, var(--lumen-broad), transparent 68%),
+    #0d0f1c !important;
+  border: 0 !important;
+  box-shadow: inset 0 0 0 1px var(--hairline) !important;
+}
+.v2-window-layer .assistant-quick-actions button:hover {
+  color: var(--text) !important;
+  background:
+    radial-gradient(ellipse 90% 95% at 50% 145%, rgba(130, 170, 255, 0.12), transparent 68%),
+    #111425 !important;
+  border-color: transparent !important;
+  box-shadow: inset 0 0 0 1px var(--hairline-lumen), inset 0 -1px 0 var(--lumen) !important;
+  transform: translateY(-1px);
+}
+.v2-window-layer .assistant-chat {
+  color: var(--text);
+  background:
+    radial-gradient(ellipse 88% 42% at 50% 112%, var(--lumen-broad), transparent 70%),
+    #080914 !important;
+  border: 0 !important;
+  box-shadow: inset 0 0 0 1px var(--hairline) !important;
+  scrollbar-color: rgba(148, 182, 255, 0.2) transparent;
+}
+.v2-window-layer .assistant-chat::-webkit-scrollbar-thumb { background: rgba(148, 182, 255, 0.18) !important; }
+.v2-window-layer .assistant-message span {
+  color: #6b748b !important;
+  font-family: "JetBrains Mono", monospace;
+}
+.v2-window-layer .assistant-message p,
+.v2-window-layer .typing-indicator {
+  color: #aeb6c9 !important;
+  background:
+    radial-gradient(ellipse 85% 80% at 50% 130%, rgba(130, 170, 255, 0.065), transparent 70%),
+    #0d0f1c !important;
+  border: 0 !important;
+  box-shadow: inset 0 0 0 1px var(--hairline) !important;
+}
+.v2-window-layer .user-message p {
+  color: #d4daea !important;
+  background:
+    radial-gradient(ellipse 85% 80% at 50% 130%, rgba(201, 255, 71, 0.055), transparent 70%),
+    #111425 !important;
+  box-shadow: inset 0 0 0 1px var(--hairline-accent) !important;
+}
+.v2-window-layer .assistant-input-area {
+  background: transparent !important;
+}
+.v2-window-layer .assistant-input-area input {
+  color: var(--text) !important;
+  background: #0d0f1c !important;
+  border: 0 !important;
+  box-shadow: inset 0 0 0 1px var(--hairline) !important;
+}
+.v2-window-layer .assistant-input-area input:focus {
+  background: #111425 !important;
+  box-shadow: inset 0 0 0 1px var(--hairline-lumen), inset 0 -1px 0 var(--lumen) !important;
+}
+.v2-window-layer .assistant-input-area input::placeholder { color: #596177 !important; }
+.v2-window-layer .assistant-input-area button {
+  color: #06070d !important;
+  background: var(--volt) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.38), 0 0 20px rgba(201,255,71,.07);
+}
+.v2-window-layer .assistant-input-area button:hover {
+  color: #06070d !important;
+  background: var(--volt) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.5), 0 0 24px rgba(201,255,71,.15);
+}
+
+/* Skills: dark bento surfaces and chips instead of legacy off-white cards. */
+.v2-window-layer .skill-section {
+  background:
+    radial-gradient(ellipse 90% 58% at 50% 118%, var(--lumen-broad), transparent 68%),
+    #090a14 !important;
+  border: 0 !important;
+  box-shadow: inset 0 0 0 1px var(--hairline) !important;
+}
+.v2-window-layer .skill-section:hover {
+  box-shadow: inset 0 0 0 1px var(--hairline-lumen), inset 0 -1px 0 rgba(148,182,255,.35) !important;
+}
+.v2-window-layer .skill-tags span,
+.v2-window-layer .resume-skills span {
+  color: #7f889d !important;
+  background: #0d0f1c !important;
+  border: 0 !important;
+  box-shadow: inset 0 0 0 1px var(--hairline) !important;
+}
+.v2-window-layer .skill-tags span:hover,
+.v2-window-layer .resume-skills span:hover {
+  color: var(--volt) !important;
+  background: #111425 !important;
+  box-shadow: inset 0 0 0 1px var(--hairline-accent), inset 0 -1px 0 rgba(201,255,71,.45) !important;
+}
+
+/* Resume: use the same engineered-glass cards as the portfolio bento grid. */
+.v2-window-layer .resume-card {
+  background:
+    radial-gradient(ellipse 90% 50% at 50% 118%, var(--lumen-broad), transparent 68%),
+    #090a14 !important;
+  border: 0 !important;
+  box-shadow: inset 0 0 0 1px var(--hairline) !important;
+}
+.v2-window-layer .resume-card:hover {
+  box-shadow: inset 0 0 0 1px var(--hairline-strong), inset 0 -1px 0 rgba(148,182,255,.28) !important;
+}
+.v2-window-layer .resume-section-label,
+.v2-window-layer .resume-entry span { color: #697188 !important; }
+.v2-window-layer .resume-entry + .resume-entry { border-top-color: var(--hairline) !important; }
+.v2-window-layer .certification-dot {
+  background: var(--volt) !important;
+  box-shadow: 0 0 0 4px rgba(201,255,71,.06), 0 0 12px rgba(201,255,71,.18) !important;
+}
+.v2-window-layer .resume-button {
+  color: #9ba4b8 !important;
+  background: #0d0f1c !important;
+  border: 0 !important;
+  box-shadow: inset 0 0 0 1px var(--hairline-strong) !important;
+}
+.v2-window-layer .resume-button:hover {
+  color: var(--text) !important;
+  background: #111425 !important;
+  box-shadow: inset 0 0 0 1px var(--hairline-lumen), inset 0 -1px 0 var(--lumen) !important;
+}
+.v2-window-layer .resume-button.primary,
+.v2-window-layer .resume-button.primary:hover {
+  color: #06070d !important;
+  background: var(--volt) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.4), 0 0 22px rgba(201,255,71,.08) !important;
+}
+
+/* Contact submit interaction: sliding light fill plus real processing state. */
+.contact-form-footer .contact-send-button {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  min-width: 166px;
+  min-height: 46px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 0 20px;
+  border: 0 !important;
+  border-radius: 10px;
+  color: var(--text) !important;
+  background: #090a14 !important;
+  box-shadow: inset 0 0 0 1px var(--hairline-accent), inset 0 1px 0 rgba(255,255,255,.035) !important;
+  font: 700 .75rem "Outfit", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: .035em;
+  cursor: pointer;
+  transition: color .45s ease, transform .15s ease, box-shadow .35s ease;
+}
+.contact-form-footer .contact-send-button::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: -135%;
+  width: 120%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--volt);
+  transition: left .65s cubic-bezier(.2,.7,.2,1), transform .65s cubic-bezier(.2,.7,.2,1);
+}
+.contact-form-footer .contact-send-button:hover::before,
+.contact-form-footer .contact-send-button:focus-visible::before,
+.contact-form-footer .contact-send-button.is-sending::before {
+  left: -10%;
+  transform: scale(1.65);
+}
+.contact-form-footer .contact-send-button:hover,
+.contact-form-footer .contact-send-button:focus-visible,
+.contact-form-footer .contact-send-button.is-sending {
+  color: #06070d !important;
+  box-shadow: inset 0 0 0 1px rgba(201,255,71,.5), 0 0 24px rgba(201,255,71,.12) !important;
+}
+.contact-form-footer .contact-send-button:active { transform: scale(.95); transition-duration: 0s; }
+.contact-send-label,
+.contact-send-icon,
+.contact-send-processing { transition: opacity .25s ease, transform .32s ease, color .4s ease; }
+.contact-send-processing {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  opacity: 0;
+  transform: translateX(-125%);
+  color: #06070d !important;
+  white-space: nowrap;
+}
+.contact-send-processing i {
+  width: 15px;
+  height: 15px;
+  border: 2px solid rgba(6,7,13,.35);
+  border-top-color: #06070d;
+  border-radius: 50%;
+  animation: contact-send-spin .75s linear infinite;
+}
+.contact-send-button.is-sending .contact-send-label { opacity: 0; transform: translateX(130%); }
+.contact-send-button.is-sending .contact-send-icon { opacity: 0; transform: translateX(130%) rotate(35deg); }
+.contact-send-button.is-sending .contact-send-processing { opacity: 1; transform: translateX(0); }
+.contact-form-footer .contact-send-button:disabled { opacity: 1; cursor: wait; }
+@keyframes contact-send-spin { to { transform: rotate(360deg); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-form-footer .contact-send-button::before,
+  .contact-send-label,
+  .contact-send-icon,
+  .contact-send-processing { transition: none; }
+  .contact-send-processing i { animation-duration: 1.4s; }
+}

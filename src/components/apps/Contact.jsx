@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ArrowRight, Mail } from "lucide-react";
+import { Mail, Send } from "lucide-react";
 
 function Contact() {
   const [status, setStatus] = useState("idle");
@@ -52,7 +52,11 @@ function Contact() {
         <label className="contact-honeypot" aria-hidden="true">Website<input name="website" tabIndex={-1} autoComplete="off" /></label>
         <div className="contact-form-footer">
           <span>Protected by validation, rate limiting, and a spam trap.</span>
-          <button type="submit" disabled={status === "sending"}>{status === "sending" ? "Sending…" : "Send message"} <ArrowRight size={16} /></button>
+          <button className={`contact-send-button${status === "sending" ? " is-sending" : ""}`} type="submit" disabled={status === "sending"}>
+            <span className="contact-send-label">Send message</span>
+            <span className="contact-send-processing"><i aria-hidden="true" /> Processing…</span>
+            <Send className="contact-send-icon" size={16} aria-hidden="true" />
+          </button>
         </div>
         {message && <p className={`contact-form-status ${status}`} role="status">{message}</p>}
       </form>
