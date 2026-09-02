@@ -1,3 +1,5 @@
+/* global process */
+
 const SYSTEM_PROMPT = `
 You are the Christian Valles OS Portfolio Assistant.
 
@@ -147,7 +149,7 @@ Responsibilities included:
 - software navigation support
 
 CONTACT:
-Email: christianpol.valles@gmail.com
+Email: christian@cvos.dev
 GitHub: https://github.com/Critchh
 
 The Contact application inside Christian Valles OS also provides LinkedIn information and a downloadable contact card.

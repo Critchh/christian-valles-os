@@ -92,6 +92,60 @@ const projects = [
 
     note:
       "You're currently using this project.",
+
+    caseStudy: {
+      currentVersion: "V2.0.0",
+      summary:
+        "CVOS evolved from an experimental desktop portfolio into a scroll-first professional platform that keeps the operating-system interface as a focused interaction layer.",
+      versions: [
+        {
+          version: "V0.0",
+          label: "FOUNDATION",
+          title: "The first working system",
+          description: "Established the core portfolio and deployment workflow before the interface became a full product experience.",
+          features: ["Git-backed release baseline", "Vercel preview workflow", "Recoverable production deployment"],
+        },
+        {
+          version: "V1.0.0",
+          label: "OS EXPERIENCE",
+          title: "Windows became the portfolio",
+          description: "Introduced the recognizable CVOS identity through boot behavior, application windows, a desktop dock, and branded system interactions.",
+          features: ["Interactive OS windows", "Resume and project applications", "Baybayin brand continuity"],
+        },
+        {
+          version: "V2.0.0",
+          label: "CURRENT",
+          title: "A scrollable portfolio with an OS layer",
+          description: "Reframed CVOS around fast comprehension, Lumen Edge surfaces, contextual windows, real services, and physical-digital portfolio access.",
+          features: ["Scrollable bento homepage", "Gemini portfolio intelligence", "Neo domain-email contact delivery"],
+        },
+      ],
+      currentFeatures: [
+        "Scrollable recruiter- and client-friendly portfolio homepage",
+        "Contextual project, resume, skills, contact, and AI windows",
+        "Gemini-powered portfolio assistant through a protected serverless route",
+        "SMTP contact delivery to the christian@cvos.dev domain mailbox",
+        "Validation, rate limiting, and honeypot spam protection",
+        "Supabase-backed approved client feedback",
+        "NFC business-card and physical-to-digital product integration",
+        "Responsive mobile dock with Lumen Edge tap feedback",
+      ],
+      architecture: [
+        "React + Vite interface",
+        "Vercel serverless services",
+        "Gemini + Supabase integrations",
+        "Neo SMTP domain delivery",
+        "NFC physical access layer",
+      ],
+      roadmap: [
+        { version: "V2.1", title: "Case-study media", description: "Add curated desktop and mobile screenshots once the V2 visual system is locked.", status: "NEXT" },
+        { version: "V2.2", title: "Review archive", description: "Expand Show All into a complete approved-review browsing experience.", status: "PLANNED" },
+        { version: "V2.3", title: "Assistant depth", description: "Add richer project context, guided prompts, and grounded portfolio responses.", status: "PLANNED" },
+        { version: "V3.0", title: "Client-ready system layer", description: "Explore modular client portals and deeper NFC destination management without compromising the portfolio core.", status: "RESEARCH" },
+      ],
+      deploymentNote:
+        "V2 uses Vercel preview deployments for review before production. The contact system now routes validated in-frame messages through Neo SMTP to christian@cvos.dev, keeping mailbox credentials server-side.",
+    },
   },
 
 {

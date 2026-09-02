@@ -26,6 +26,7 @@ function App() {
   const z = useRef(100);
   const open = (name) => { z.current += 1; setWindows((all) => ({ ...all, [name]: { open: true, zIndex: z.current } })); };
   const openProject = (projectId) => open(`Project:${projectId}`);
+  const openCaseStudy = (projectId) => open(`CaseStudy:${projectId}`);
   const close = (name) => setWindows((all) => ({ ...all, [name]: { ...all[name], open: false } }));
   const askAssistant = (question = assistantDraft) => {
     const cleanedQuestion = question.trim();
@@ -45,8 +46,8 @@ function App() {
 
       <div className="v2-container" id="top">
         <section className="v2-hero v2-grid-bg">
-          <article className="v2-panel v2-hero-copy"><p className="v2-eyebrow">CHRISTIAN VALLES OS · IT PROFESSIONAL · DEVELOPER</p><h1>I build practical systems that <span className="volt">solve</span> real problems.</h1><p className="v2-lede">I connect technology, support, and development to create useful digital experiences—from web applications to physical-digital products.</p><div className="v2-actions"><a className="v2-button primary" href="#projects">View my work <ArrowRight size={16} /></a><button className="v2-button" onClick={() => open("Contact")}>Contact me</button><button className="v2-text-button" onClick={() => open("AI Assistant")}>&gt;_ Ask CVOS</button></div></article>
-          <article className="v2-panel v2-featured"><div className="v2-panel-head"><span className="v2-label">Featured project</span><span className="v2-chip">IN DEVELOPMENT</span></div><h2>Christian Valles OS</h2><p>{featured?.description}</p><div className="v2-metrics"><Metric label="RELEASE" value="2.0" /><Metric label="AI CORE" value="GEMINI" /><Metric label="DATA" value="SUPABASE" /></div><Tags items={featured?.technologies.slice(0, 5)} /><button className="v2-project-link" onClick={() => openProject(featured.id)}>View case study &nbsp; →</button></article>
+          <article className="v2-panel v2-hero-copy"><p className="v2-eyebrow">CHRISTIAN VALLES OS · IT PROFESSIONAL · DEVELOPER</p><h1>I build practical systems that <span className="volt">solve</span> real problems.</h1><p className="v2-lede">I connect technology, support, and development to create useful digital experiences—from web applications to physical-digital products.</p><div className="v2-actions"><a className="v2-button primary" href="#projects">View my work <ArrowRight size={16} /></a><button className="v2-button" onClick={() => open("Contact")}>Contact me</button><AskCvosButton onClick={() => open("AI Assistant")} /></div></article>
+          <article className="v2-panel v2-featured"><div className="v2-panel-head"><span className="v2-label">Featured project</span><span className="v2-chip">IN DEVELOPMENT</span></div><h2>Christian Valles OS</h2><p>{featured?.description}</p><div className="v2-metrics"><Metric label="RELEASE" value="2.0" /><Metric label="AI CORE" value="GEMINI" /><Metric label="DATA" value="SUPABASE" /></div><Tags items={featured?.technologies.slice(0, 5)} /><button className="v2-project-link" onClick={() => openCaseStudy(featured.id)}>View case study &nbsp; →</button></article>
         </section>
 
         <section className="v2-trust-row" aria-label="Client feedback"><div className="v2-panel v2-testimonials"><FeedbackWidget showLeaveAction={false} onLeaveFeedback={() => open("Feedback")} /></div><article className="v2-panel v2-review-cta"><div><span className="v2-eyebrow">CLIENT EXPERIENCE</span><h2>How was your experience?</h2><p>Share a verified review from a project, support interaction, or collaboration.</p></div><button className="v2-button primary" onClick={() => open("Feedback")}>Leave a review <Sparkles size={15} /></button></article></section>
@@ -63,12 +64,13 @@ function App() {
         <footer className="v2-footer"><strong>CVOS · CHRISTIAN VALLES OS · 2026</strong><span>BUILT WITH REACT · VITE · INTENTIONAL CRAFT</span></footer>
       </div>
 
-      <nav className="v2-mobile-dock"><a className="active" href="#projects"><FolderCode size={19} /></a><button onClick={() => open("AI Assistant")}><Bot size={19} /></button><button onClick={() => open("Resume")}><FileText size={19} /></button><button onClick={() => open("Contact")}><Mail size={19} /></button></nav>
+      <nav className="v2-mobile-dock" aria-label="Mobile quick navigation"><a className="active" href="#projects" aria-label="Projects"><FolderCode size={19} /></a><button aria-label="Ask CVOS" onClick={() => open("AI Assistant")}><Bot size={19} /></button><button aria-label="Resume" onClick={() => open("Resume")}><FileText size={19} /></button><button aria-label="Contact" onClick={() => open("Contact")}><Mail size={19} /></button></nav>
       <div className="v2-window-layer">{Object.entries(windows).map(([name, state], index) => {
         if (!state.open) return null;
-        const projectId = name.startsWith("Project:") ? name.slice(8) : null;
+        const isCaseStudy = name.startsWith("CaseStudy:");
+        const projectId = name.startsWith("Project:") ? name.slice(8) : isCaseStudy ? name.slice(10) : null;
         const project = projectId ? projects.find((item) => item.id === projectId) : null;
-        return <OSWindow key={name} title={project?.title || name} zIndex={state.zIndex} isActive={state.zIndex === activeZ} defaultOffset={index} onFocus={() => open(name)} onClose={() => close(name)} onMinimize={() => close(name)}>{projectId ? <Projects initialProjectId={projectId} /> : name === "AI Assistant" ? <Assistant initialQuestion={assistantSeed} /> : staticContent[name]}</OSWindow>;
+        return <OSWindow key={name} title={isCaseStudy ? "CVOS Case Study" : project?.title || name} zIndex={state.zIndex} isActive={state.zIndex === activeZ} defaultOffset={index} onFocus={() => open(name)} onClose={() => close(name)} onMinimize={() => close(name)}>{projectId ? <Projects initialProjectId={projectId} displayMode={isCaseStudy ? "case-study" : "detail"} /> : name === "AI Assistant" ? <Assistant initialQuestion={assistantSeed} /> : staticContent[name]}</OSWindow>;
       })}</div>
     </main>
   );
@@ -78,5 +80,8 @@ function Metric({ label, value }) { return <div className="v2-metric"><span>{lab
 function Tags({ items = [] }) { return <div className="v2-tags">{items.map((item) => <span className="v2-tag" key={item}>{item}</span>)}</div>; }
 function SectionHead({ eyebrow, title, copy }) { return <div className="v2-section-heading"><div><span className="v2-eyebrow">{eyebrow}</span><h2>{title}</h2></div><p>{copy}</p></div>; }
 function Conversion({ icon, title, copy, children }) { return <article className="v2-panel v2-conversion-card">{icon}<h3>{title}</h3><p>{copy}</p><div className="v2-actions">{children}</div></article>; }
+function AskCvosButton({ onClick }) {
+  return <button className="v2-ask-button" type="button" onClick={onClick} aria-label="Ask CVOS"><Sparkles size={18} aria-hidden="true" /><span>{[..."ASK CVOS"].map((letter, index) => <span className="v2-ask-letter" style={{ "--letter-index": index }} key={`${letter}-${index}`}>{letter === " " ? "\u00a0" : letter}</span>)}</span></button>;
+}
 
 export default App;

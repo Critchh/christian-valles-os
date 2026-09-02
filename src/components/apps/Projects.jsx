@@ -1,7 +1,7 @@
 import { useState } from "react";
 import projects from "../../data/projects";
 
-function Projects({ initialProjectId = null }) {
+function Projects({ initialProjectId = null, displayMode = "detail" }) {
   const [selectedProject, setSelectedProject] = useState(() =>
     projects.find((project) => project.id === initialProjectId) || null
   );
@@ -11,6 +11,10 @@ function Projects({ initialProjectId = null }) {
   // ==============================
 
   if (selectedProject) {
+    if (displayMode === "case-study" && selectedProject.caseStudy) {
+      return <CvosCaseStudy project={selectedProject} onBack={() => setSelectedProject(null)} />;
+    }
+
     return (
       <div className="project-detail">
 
@@ -269,6 +273,53 @@ function Projects({ initialProjectId = null }) {
       </div>
 
     </div>
+  );
+}
+
+function CvosCaseStudy({ project, onBack }) {
+  const { caseStudy } = project;
+
+  return (
+    <article className="cvos-case-study">
+      <button className="project-back" onClick={onBack}>← Project library</button>
+
+      <header className="cvos-case-hero">
+        <div>
+          <p className="app-eyebrow">PRODUCT CASE STUDY · CVOS</p>
+          <h1>{project.title}</h1>
+          <p>{caseStudy.summary}</p>
+        </div>
+        <div className="cvos-case-release"><span>CURRENT RELEASE</span><strong>{caseStudy.currentVersion}</strong><small>{project.status}</small></div>
+      </header>
+
+      <section className="cvos-case-milestones" aria-label="CVOS version history">
+        {caseStudy.versions.map((version) => (
+          <article className="cvos-version-card" key={version.version}>
+            <div><span>{version.version}</span><small>{version.label}</small></div>
+            <h2>{version.title}</h2>
+            <p>{version.description}</p>
+            <ul>{version.features.map((feature) => <li key={feature}>{feature}</li>)}</ul>
+          </article>
+        ))}
+      </section>
+
+      <section className="cvos-case-section">
+        <div className="cvos-case-heading"><p className="project-detail-label">V2 SYSTEM FEATURES</p><h2>What the platform does now.</h2></div>
+        <div className="project-feature-grid">{caseStudy.currentFeatures.map((feature) => <div className="project-feature" key={feature}><span>+</span><p>{feature}</p></div>)}</div>
+      </section>
+
+      <section className="cvos-case-section cvos-architecture">
+        <div className="cvos-case-heading"><p className="project-detail-label">SYSTEM ARCHITECTURE</p><h2>Portfolio, services, and physical touchpoints.</h2></div>
+        <div className="cvos-architecture-flow">{caseStudy.architecture.map((layer, index) => <div className="cvos-architecture-node" key={layer}><span>0{index + 1}</span><strong>{layer}</strong></div>)}</div>
+      </section>
+
+      <section className="cvos-case-section">
+        <div className="cvos-case-heading"><p className="project-detail-label">ROADMAP</p><h2>Planned evolution.</h2></div>
+        <div className="cvos-roadmap">{caseStudy.roadmap.map((item) => <article key={item.version}><span>{item.version}</span><div><h3>{item.title}</h3><p>{item.description}</p></div><small>{item.status}</small></article>)}</div>
+      </section>
+
+      <aside className="project-note cvos-case-note"><span>DEPLOYMENT MILESTONE</span><p>{caseStudy.deploymentNote}</p></aside>
+    </article>
   );
 }
 
