@@ -794,8 +794,8 @@
     #090a14 !important;
 }
 .cvos-featured-content { position: relative; z-index: 2; display: flex; flex: 1; flex-direction: column; justify-content: center; }
-.cvos-featured-stars { position: absolute; z-index: 0; inset: 0; overflow: hidden; pointer-events: none; opacity: .72; mask-image: linear-gradient(110deg, transparent 2%, #000 38%, #000 100%); }
-.cvos-featured-stars i { position: absolute; inset: -80% 0 0; background-repeat: repeat; will-change: transform; }
+.cvos-featured-stars { position: absolute; z-index: 0; inset: 0; overflow: hidden; pointer-events: none; opacity: .78; mask-image: radial-gradient(ellipse 96% 92% at 50% 50%, #000 35%, rgba(0,0,0,.9) 72%, transparent 100%); }
+.cvos-featured-stars i { position: absolute; top: 0; left: 0; width: 100%; height: 200%; background-repeat: repeat; will-change: transform; }
 .cvos-featured-stars i:nth-child(1) {
   background-image:
     radial-gradient(circle, rgba(221,235,255,.78) 0 1px, transparent 1.35px),
@@ -818,9 +818,9 @@
   filter: blur(.15px) drop-shadow(0 0 4px rgba(148,182,255,.22));
   animation: cvos-star-drift 105s linear infinite;
 }
-.v2-featured::before { content: ""; position: absolute; z-index: 1; inset: 0; pointer-events: none; background: linear-gradient(90deg, rgba(9,10,20,.92) 0%, rgba(9,10,20,.55) 48%, rgba(9,10,20,.1) 100%); }
+.v2-featured::before { content: ""; position: absolute; z-index: 1; inset: 0; pointer-events: none; background: radial-gradient(ellipse 74% 70% at 50% 50%, rgba(9,10,20,.22), rgba(9,10,20,.54) 100%); }
 .v2-featured:hover .cvos-featured-stars { opacity: .95; }
-@keyframes cvos-star-drift { from { transform: translateY(0); } to { transform: translateY(-42%); } }
+@keyframes cvos-star-drift { from { transform: translateY(0); } to { transform: translateY(-50%); } }
 
 .cvos-snapshot-grid { display: grid; gap: 14px; }
 .cvos-snapshot { margin: 0; overflow: hidden; border-radius: 12px; background: radial-gradient(ellipse 90% 48% at 50% 118%, var(--lumen-broad), transparent 68%), #090a14; box-shadow: inset 0 0 0 1px var(--hairline); }

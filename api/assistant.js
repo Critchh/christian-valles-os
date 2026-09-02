@@ -73,17 +73,7 @@ Features include:
 - lists
 - data processing
 
-2. Mock Clothing Website
-A responsive e-commerce-style website built using HTML, CSS, and JavaScript.
-Features include:
-- responsive layouts
-- product listings
-- navigation
-- mobile compatibility
-- AI shopping assistant integration
-- GitHub Pages deployment
-
-3. Christian Valles OS
+2. Christian Valles OS
 The portfolio website the visitor is currently using.
 Built with React, JavaScript, CSS, Vite, and Vercel.
 Features include:
