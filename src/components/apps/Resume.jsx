@@ -83,6 +83,19 @@ function Resume() {
               <li>Account access and software troubleshooting</li>
             </ul>
           </div>
+
+          <div className="resume-entry">
+            <h3>Assistant Store Manager</h3>
+            <p>Pizza Hut · McAllen, Texas</p>
+            <span>Nov 2023 – Apr 2025</span>
+
+            <ul>
+              <li>Managed customer service, retention, complaints, refund requests, and questions by phone and in store</li>
+              <li>Oversaw product quality and overall store efficiency during assigned shifts</li>
+              <li>Managed registers, balanced daily drawers, and minimized transaction discrepancies</li>
+              <li>Mentored new employees on company policies, procedures, and operational best practices</li>
+            </ul>
+          </div>
         </section>
 
         <section className="resume-card resume-card-wide">

@@ -67,6 +67,16 @@ const portfolio = {
       "AWS Fundamentals",
     ],
 
+    professional: [
+      "Customer Service & Retention",
+      "Sales Support",
+      "Complaint & Refund Resolution",
+      "Shift Operations Oversight",
+      "Team Training & Mentorship",
+      "Cash Handling & Reconciliation",
+      "Product Quality Control",
+    ],
+
     concepts: [
       "Object-Oriented Programming",
       "Responsive Web Design",

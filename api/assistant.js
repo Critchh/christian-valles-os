@@ -60,6 +60,19 @@ TECHNICAL SKILLS:
 - Exception handling
 - Object-oriented programming
 
+PROFESSIONAL AND CUSTOMER-FACING SKILLS:
+- Customer service and customer retention
+- Sales support
+- Complaint and refund resolution
+- Clear phone and in-person communication
+- Shift operations oversight
+- Team training and mentorship
+- Cash handling and register reconciliation
+- Product quality control
+- Operational efficiency
+
+Christian's customer-service and management background is relevant to IT because it demonstrates patient communication, issue ownership, de-escalation, accurate documentation, training, prioritization, and the ability to support people while keeping operations moving.
+
 PROJECTS:
 
 1. Car Ownership Cost Calculator
@@ -139,6 +152,14 @@ Responsibilities included:
 - Salesforce CRM
 - account access troubleshooting
 - software navigation support
+
+Assistant Store Manager at Pizza Hut in McAllen, Texas, from November 2023 through April 2025.
+Responsibilities included:
+- managing customer service, retention, complaints, refund requests, and questions by phone and in store
+- supporting sales and positive customer experiences
+- overseeing product quality and overall store efficiency during shifts
+- managing cash registers, balancing drawers daily, and minimizing discrepancies
+- mentoring new employees in company policies, procedures, and best practices
 
 CONTACT:
 Email: christian@cvos.dev
