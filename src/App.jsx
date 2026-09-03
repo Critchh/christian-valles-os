@@ -4,6 +4,7 @@ import "./App.css";
 import "./v2.css";
 import "./figma-theme.css";
 import OSWindow from "./components/OSWindow";
+import BootScreen from "./components/BootScreen";
 import FeedbackWidget from "./components/FeedbackWidget";
 import NfcCard from "./components/NfcCard";
 import Projects from "./components/apps/Projects";
@@ -20,6 +21,7 @@ const featured = projects.find((item) => item.id === "portfolio-os");
 const selected = [featured, projects.find((item) => item.id === "nfc-review-system"), projects.find((item) => item.id === "car-cost-calculator")].filter(Boolean);
 
 function App() {
+  const [showBoot, setShowBoot] = useState(true);
   const [windows, setWindows] = useState({});
   const [assistantDraft, setAssistantDraft] = useState("");
   const [assistantSeed, setAssistantSeed] = useState("");
@@ -37,7 +39,9 @@ function App() {
   const activeZ = Math.max(0, ...Object.values(windows).filter((item) => item?.open).map((item) => item.zIndex || 0));
 
   return (
-    <main className="v2-shell">
+    <>
+      {showBoot && <BootScreen onFinish={() => setShowBoot(false)} />}
+      <main className="v2-shell">
       <header className="v2-nav"><div className="v2-nav-inner">
         <a className="v2-brand" href="#top"><img className="v2-brand-mark" src="/cvos-brand-mark.png" alt="" /><span>CVOS</span><span className="v2-version">v2.0.0</span></a>
         <nav className="v2-links"><a href="#projects">Projects</a><a href="#intelligence">AI + NFC</a><button onClick={() => open("Skills")}>Skills</button><button onClick={() => open("Resume")}>Resume</button><button onClick={() => open("Contact")}>Contact</button></nav>
@@ -72,7 +76,8 @@ function App() {
         const project = projectId ? projects.find((item) => item.id === projectId) : null;
         return <OSWindow key={name} title={isCaseStudy ? "CVOS Case Study" : project?.title || name} zIndex={state.zIndex} isActive={state.zIndex === activeZ} defaultOffset={index} onFocus={() => open(name)} onClose={() => close(name)} onMinimize={() => close(name)}>{projectId ? <Projects initialProjectId={projectId} displayMode={isCaseStudy ? "case-study" : "detail"} /> : name === "AI Assistant" ? <Assistant initialQuestion={assistantSeed} /> : staticContent[name]}</OSWindow>;
       })}</div>
-    </main>
+      </main>
+    </>
   );
 }
 
