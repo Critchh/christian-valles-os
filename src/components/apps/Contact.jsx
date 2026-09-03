@@ -36,10 +36,7 @@ function Contact() {
         <h1>Let’s build something.</h1>
         <p>Send a project inquiry, opportunity, or professional message directly to my CVOS inbox.</p>
         <a className="contact-v2-email" href="mailto:christian@cvos.dev"><Mail size={17} /> christian@cvos.dev</a>
-        <div className="contact-v2-identity">
-          <div><strong>Christian Valles</strong><a href="tel:+19564837102">+1 956-483-7102</a><a href="mailto:christian@cvos.dev">christian@cvos.dev</a></div>
-          <a className="contact-save-button" href="/christian-valles.vcf" download="Christian-Valles.vcf"><ContactRound size={17} aria-hidden="true" /> Save contact</a>
-        </div>
+        <a className="contact-save-button" href="/christian-valles.vcf" download="Christian-Valles.vcf"><ContactRound size={17} aria-hidden="true" /> Save contact</a>
         <div className="contact-v2-links">
           <a href="https://github.com/Critchh" target="_blank" rel="noreferrer"><span>&lt;/&gt;</span> GitHub</a>
           <a href="https://www.linkedin.com/in/christian-pol-valles-58a2a2249/" target="_blank" rel="noreferrer"><span>in</span> LinkedIn</a>
