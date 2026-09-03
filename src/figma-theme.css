@@ -921,3 +921,111 @@
   .cvos-boot-mark,.cvos-boot-halo { animation: none; }
   .cvos-boot { transition-duration: .2s; }
 }
+
+/* Leave Feedback window: Lumen surfaces with an accessible volt star rating. */
+.v2-window-layer .feedback-form-app,
+.v2-window-layer .feedback-form-success { color: var(--text) !important; }
+.v2-window-layer .feedback-form-header h1,
+.v2-window-layer .feedback-form-success h1 { color: #e7ecf7 !important; }
+.v2-window-layer .feedback-form-header > p:last-child,
+.v2-window-layer .feedback-success-copy { color: var(--muted) !important; }
+.v2-window-layer .feedback-form {
+  padding: 22px;
+  border-radius: 14px;
+  background: radial-gradient(ellipse 88% 42% at 50% 112%, var(--lumen-broad), transparent 70%), #080a12 !important;
+  box-shadow: inset 0 0 0 1px var(--hairline) !important;
+}
+.v2-window-layer .feedback-form label > span,
+.v2-window-layer .feedback-rating-field legend {
+  color: #778198 !important;
+  font: 700 .62rem "Space Mono", monospace !important;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.v2-window-layer .feedback-form input:not([type="radio"]),
+.v2-window-layer .feedback-form textarea {
+  border: 0 !important;
+  color: #d4dbea !important;
+  background: rgba(7,9,15,.8) !important;
+  box-shadow: inset 0 0 0 1px var(--hairline) !important;
+}
+.v2-window-layer .feedback-form input:not([type="radio"]):focus,
+.v2-window-layer .feedback-form textarea:focus {
+  box-shadow: inset 0 0 0 1px var(--hairline-lumen), inset 0 -1px 0 var(--lumen) !important;
+}
+.feedback-rating-field {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-width: 0;
+  margin: 0 0 18px;
+  padding: 14px 16px;
+  border: 0;
+  border-radius: 10px;
+  background: radial-gradient(ellipse 90% 95% at 50% 145%, rgba(130,170,255,.07), transparent 68%), rgba(7,9,15,.72);
+  box-shadow: inset 0 0 0 1px var(--hairline);
+}
+.feedback-rating-field legend { float: left; width: 100%; margin: 0 0 10px; padding: 0; }
+.feedback-rating-field legend + * { clear: left; }
+.feedback-star-rating { display: inline-flex; flex-direction: row-reverse; align-items: center; gap: 3px; }
+.feedback-star-rating span { position: relative; display: block; }
+.feedback-star-rating input {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  opacity: 0;
+  appearance: none;
+  pointer-events: none;
+}
+.v2-window-layer .feedback-star-rating label {
+  display: block !important;
+  margin: 0 !important;
+  color: #3e475a !important;
+  font: 400 2rem/1 "Outfit", sans-serif !important;
+  cursor: pointer;
+  text-shadow: 0 0 0 transparent;
+  transform-origin: 50% 70%;
+  transition: color .18s ease, text-shadow .18s ease, transform .18s ease;
+}
+.feedback-star-rating span:has(input:checked) label,
+.feedback-star-rating span:has(~ span input:checked) label {
+  color: var(--volt) !important;
+  text-shadow: 0 0 9px rgba(201,255,71,.2);
+}
+.feedback-star-rating span:hover label,
+.feedback-star-rating span:has(~ span:hover) label {
+  color: var(--lumen-mid) !important;
+  text-shadow: 0 0 11px rgba(148,182,255,.48);
+  transform: translateY(-2px) scale(1.05);
+}
+.feedback-star-rating span:has(input:focus-visible) label {
+  color: #fff !important;
+  outline: 1px solid rgba(148,182,255,.45);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+.feedback-rating-field output {
+  color: #727d93;
+  font: 700 .62rem "Space Mono", monospace;
+  letter-spacing: .08em;
+}
+.v2-window-layer .feedback-form-actions { border-top-color: var(--hairline) !important; }
+.v2-window-layer .feedback-form-actions > span { color: #616c82 !important; }
+.v2-window-layer .feedback-form-actions button,
+.v2-window-layer .feedback-form-success > button {
+  border: 0 !important;
+  color: #071004 !important;
+  background: var(--volt) !important;
+  box-shadow: inset 0 0 0 1px rgba(235,255,196,.35), 0 0 20px rgba(201,255,71,.08) !important;
+}
+.v2-window-layer .feedback-success-preview {
+  border: 0 !important;
+  color: var(--text) !important;
+  background: radial-gradient(ellipse 88% 44% at 50% 118%, var(--lumen-broad), transparent 68%), #090a14 !important;
+  box-shadow: inset 0 0 0 1px var(--hairline) !important;
+}
+.v2-window-layer .feedback-success-rating { color: var(--volt) !important; }
+
+@media (max-width: 520px) {
+  .feedback-rating-field { align-items: flex-start; flex-direction: column; gap: 9px; }
+}

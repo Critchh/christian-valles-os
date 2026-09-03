@@ -241,35 +241,18 @@ function FeedbackForm() {
         </label>
 
 
-        <label>
-          <span>Rating *</span>
-
-          <select
-            name="rating"
-            value={formData.rating}
-            onChange={handleChange}
-          >
-            <option value={5}>
-              ★★★★★ — Excellent
-            </option>
-
-            <option value={4}>
-              ★★★★☆ — Very Good
-            </option>
-
-            <option value={3}>
-              ★★★☆☆ — Good
-            </option>
-
-            <option value={2}>
-              ★★☆☆☆ — Fair
-            </option>
-
-            <option value={1}>
-              ★☆☆☆☆ — Poor
-            </option>
-          </select>
-        </label>
+        <fieldset className="feedback-rating-field">
+          <legend>Rating *</legend>
+          <div className="feedback-star-rating">
+            {[1, 2, 3, 4, 5].map((rating) => (
+              <span key={rating}>
+                <input id={`feedback-star-${rating}`} type="radio" name="rating" value={rating} checked={formData.rating === rating} onChange={handleChange} />
+                <label htmlFor={`feedback-star-${rating}`} title={`${rating} star${rating === 1 ? "" : "s"}`} aria-label={`${rating} star${rating === 1 ? "" : "s"}`}>★</label>
+              </span>
+            ))}
+          </div>
+          <output aria-live="polite">{formData.rating} / 5</output>
+        </fieldset>
 
 
         <label>
