@@ -967,7 +967,7 @@
 }
 .feedback-rating-field legend { float: left; width: 100%; margin: 0 0 10px; padding: 0; }
 .feedback-rating-field legend + * { clear: left; }
-.feedback-star-rating { display: inline-flex; flex-direction: row-reverse; align-items: center; gap: 3px; }
+.feedback-star-rating { display: inline-flex; align-items: center; gap: 3px; }
 .feedback-star-rating span { position: relative; display: block; }
 .feedback-star-rating input {
   position: absolute !important;
@@ -1025,6 +1025,45 @@
   box-shadow: inset 0 0 0 1px var(--hairline) !important;
 }
 .v2-window-layer .feedback-success-rating { color: var(--volt) !important; }
+
+/* Client feedback bento: the same Lumen star language as the review window. */
+.v2-testimonials {
+  background:
+    radial-gradient(ellipse 82% 54% at 50% 118%, rgba(92,139,214,.13), transparent 70%),
+    #080a12 !important;
+  box-shadow:
+    inset 0 0 0 1px var(--hairline-lumen),
+    inset 0 -1px 0 rgba(148,182,255,.13) !important;
+}
+.v2-testimonials .feedback-widget-top {
+  color: #778198 !important;
+  font-family: "Space Mono", monospace !important;
+}
+.v2-testimonials .feedback-stars {
+  display: inline-flex;
+  gap: 5px;
+  margin: 4px 0 12px !important;
+  color: #3e475a !important;
+  font-size: 1rem !important;
+  letter-spacing: 0 !important;
+}
+.v2-testimonials .feedback-stars span {
+  color: #3e475a;
+  text-shadow: 0 0 0 transparent;
+}
+.v2-testimonials .feedback-stars span.is-filled {
+  color: var(--volt);
+  text-shadow: 0 0 9px rgba(201,255,71,.22);
+}
+.v2-testimonials .feedback-widget-body h3,
+.v2-testimonials .feedback-widget-body blockquote,
+.v2-testimonials .feedback-author strong {
+  color: #d4dbea !important;
+}
+.v2-testimonials .feedback-widget-body > p:not(.feedback-stars),
+.v2-testimonials .feedback-author span {
+  color: #7e899e !important;
+}
 
 @media (max-width: 520px) {
   .feedback-rating-field { align-items: flex-start; flex-direction: column; gap: 9px; }

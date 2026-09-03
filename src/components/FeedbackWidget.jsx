@@ -1,6 +1,25 @@
 import { useCallback, useEffect, useState } from "react";
 import { supabase } from "../lib/supabase";
 
+function FeedbackStars({ rating = 0 }) {
+  return (
+    <p
+      className="feedback-stars"
+      aria-label={`${rating} out of 5 stars`}
+    >
+      {[1, 2, 3, 4, 5].map((star) => (
+        <span
+          className={star <= rating ? "is-filled" : ""}
+          aria-hidden="true"
+          key={star}
+        >
+          ★
+        </span>
+      ))}
+    </p>
+  );
+}
+
 function FeedbackWidget({
   onLeaveFeedback,
   showLeaveAction = true,
@@ -99,9 +118,7 @@ function FeedbackWidget({
 
         <div className="feedback-widget-body">
 
-          <p className="feedback-stars">
-            ☆☆☆☆☆
-          </p>
+          <FeedbackStars />
 
           <h3>NFC Review System</h3>
 
@@ -165,12 +182,7 @@ function FeedbackWidget({
 
       <div className="feedback-widget-body">
 
-        <p className="feedback-stars">
-          {"★".repeat(review.rating)}
-          {"☆".repeat(
-            5 - review.rating
-          )}
-        </p>
+        <FeedbackStars rating={review.rating} />
 
         <blockquote>
           “{review.quote}”
